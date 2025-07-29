@@ -9,12 +9,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
-@Entity
-@Table(name="timecards")
+// @Data
+// @AllArgsConstructor
+// @NoArgsConstructor
+// @Builder
+// @Entity
+// @Table(name="timecards")
 public class TimeCard{
 
 
@@ -24,14 +24,16 @@ public class TimeCard{
 
     // @ManyToOne(cascade = CascadeType.ALL)
     // @JoinColumn(name = "task_id")
-    fkTaskID;
+    //fkTaskID;
     
     // @ManyToOne(cascade = CascadeType.ALL)
     // @JoinColumn(name = "member_id")
-    fkMemberID;
+    //fkMemberID;
 
     LocalDateTime TimeCardDate;
     private String WorkDescription;
     private Integer HourCount;
     private Float HourlyRate;
     private Boolean IsBilled;
+
+}

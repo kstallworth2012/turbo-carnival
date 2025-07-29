@@ -1,46 +1,46 @@
-package com.project.projectmanager.domain;;
+package com.project.projectmanager.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+// import lombok.AllArgsConstructor;
+// import lombok.Builder;
+// import lombok.Data;
+// import lombok.NoArgsConstructor;
 
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
-@Entity
-@Table(name="Member")
+// @Data
+// @AllArgsConstructor
+// @NoArgsConstructor
+// @Builder
+// @Entity
+// @Table(name="Member")
 public class Member{
 
- 	//@Id
-	//@GeneratedValue(strategy =GenerationType.SEQUENCE,generator= "member_id_seq)
-	private Long id;
+ 	// //@Id
+	// //@GeneratedValue(strategy =GenerationType.SEQUENCE,generator= "member_id_seq)
+	// private Long id;
 	
-	private String firstName;
+	// private String firstName;
     	
-	private String lastName;
+	// private String lastName;
     	
-	private String email;
+	// private String email;
     	
-	private String userName;
+	// private String userName;
     	
-	private String password;
+	// private String password;
     	
-	private Boolean displayProfile; 
+	// private Boolean displayProfile; 
     	
-	private String homePage; 
+	// private String homePage; 
     	
-	private String homePhone; 
+	// private String homePhone; 
     	
-	private String workPHone; 
+	// private String workPHone; 
     	
-	private String mobilePHone; 
+	// private String mobilePHone; 
     	
-	private String fax; 
+	// private String fax; 
     	
-	private String aboutMe; 
+	// private String aboutMe; 
 
 
 }

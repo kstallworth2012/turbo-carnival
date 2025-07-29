@@ -2,9 +2,9 @@ package com.project.projectmanager.dao.impl;
 
 
 
-com.project.projectmanager.dao.ProjectDao;
+import com.project.projectmanager.dao.ProjectDao;
 
-import org.springframework.jdbc.core.JdbcTemplate;
+// import org.springframework.jdbc.core.JdbcTemplate;
 
 
 
@@ -12,13 +12,13 @@ import org.springframework.jdbc.core.JdbcTemplate;
 public class ProjectDaoImpl implements ProjectDao{
 
 
-		private Final JdbcTemplate jdbcTemplate;
+	// 	private final JdbcTemplate jdbcTemplate;
 
 
-	public ProjectDaoImpl(Final JdbcTemplate _jdbcTemplate){
+	// public ProjectDaoImpl(final JdbcTemplate _jdbcTemplate){
 
-		this.jdbcTemplate = _jdbcTemplate;
-	}
+	// 	this.jdbcTemplate = _jdbcTemplate;
+	// }
 
 
 }

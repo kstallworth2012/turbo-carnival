@@ -1,8 +1,12 @@
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.ResponseStatus;
+package com.project.projectmanager.exception;
 
 
-@RequestStatus(HttpStatus.NOT_FOUND) //404
+
+// import org.springframework.http.HttpStatus;
+// import org.springframework.web.bind.annotation.ResponseStatus;
+
+
+// @RequestStatus(HttpStatus.NOT_FOUND) //404
 public class MessageNotFoundException extends RuntimeException{
 
 	 public MessageNotFoundException(){

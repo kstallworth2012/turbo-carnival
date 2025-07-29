@@ -1,20 +1,20 @@
 package com.project.projectmanager.domain;
 
 
-import com.project.projectmanager.domain.Teams;
-import com.project.projectmanager.domain.Member;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+// import com.project.projectmanager.domain.Teams;
+// import com.project.projectmanager.domain.Member;
+// import lombok.AllArgsConstructor;
+// import lombok.Builder;
+// import lombok.Data;
+// import lombok.NoArgsConstructor;
 
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
-@Entity
-@Table(name="teammembers")
+// @Data
+// @AllArgsConstructor
+// @NoArgsConstructor
+// @Builder
+// @Entity
+// @Table(name="teammembers")
 public class TeamMember{
 
  	// @Id
@@ -23,10 +23,10 @@ public class TeamMember{
 
 	// @ManyToOne(cascade = CascadeType.ALL)
     // @JoinColumn(name = "team_id")
-	Team fkTeamID;
+	//Team fkTeamID;
 
 	// @ManyToOne(cascade = CascadeType.ALL)
     // @JoinColumn(name = "member_id")
-	Member fkMemberID;
+	//Member fkMemberID;
 
 }

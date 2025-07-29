@@ -1,25 +1,24 @@
 package com.project.projectmanager.dao.impl;
 
-import com.project.projectmanager.dao.TimeCardDao;
+// import com.project.projectmanager.dao.TimeCardDao;
 
-import org.springframework.jdbc.core.JdbcTemplate;
-
-
-public class TimeCardDaoImpl implements TimeCardDao{
+// import org.springframework.jdbc.core.JdbcTemplate;
 
 
-
-private Final JdbcTemplate jdbcTemplate;
+public class TimeCardDaoImpl{}
+//  implements TimeCardDao{
 
 
 
-public TimeCardDaoImpl(Final JdbcTemplate _jdbcTemplate){
-
-			this.jdbcTemplate = _jdbcTemplate;
-		}
-
-}
+// private final JdbcTemplate jdbcTemplate;
 
 
 
-//MemberDaoImplTests.java	ProjectDaoImplTests.java TeamMemberDaoImplTests.java MessageDaoImplTests.java TaskDaoImplTests.java	TimeCardDaoImplTests.java PostDaoImplTests.java TeamDaoImplTests.java
+// public TimeCardDaoImpl(final JdbcTemplate _jdbcTemplate){
+
+// 			this.jdbcTemplate = _jdbcTemplate;
+// 		}
+
+// }
+
+

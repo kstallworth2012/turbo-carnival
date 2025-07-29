@@ -2,38 +2,38 @@ package com.project.projectmanager.domain;
 
 
 
-import com.project.projectmanager.domain.Member;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import java.time.LocalDateTime;
+// import com.project.projectmanager.domain.Member;
+// import lombok.AllArgsConstructor;
+// import lombok.Builder;
+// import lombok.Data;
+// import lombok.NoArgsConstructor;
+// import java.time.LocalDateTime;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
-@Entity
-@Table(name="Messages")
+// @Data
+// @AllArgsConstructor
+// @NoArgsConstructor
+// @Builder
+// @Entity
+// @Table(name="Messages")
 public class Messages{
 	// @Id
 	// @GeneratedValue(strategy =GenerationType.SEQUENCE,generator= "message_id_seq)
-	private Long id;
+// 	private Long id;
 	
-		// @ManyToOne(cascade = CascadeType.ALL)
-    	// @JoinColumn(name = "member_id")
-    	Member fkMessageToMemberID;
+// 		// @ManyToOne(cascade = CascadeType.ALL)
+//     	// @JoinColumn(name = "member_id")
+//     //	Member fkMessageToMemberID;
 	
-		// @ManyToOne(cascade = CascadeType.ALL)
-    	// @JoinColumn(name = "member_id")
-    	Member fkMessageFromMemberID;
+// 		// @ManyToOne(cascade = CascadeType.ALL)
+//     	// @JoinColumn(name = "member_id")
+//    // 	Member fkMessageFromMemberID;
     	
-		private LocalDateTime MessageDate;
+// 		private LocalDateTime MessageDate;
     		
-		private String MessageSubject;
+// 		private String MessageSubject;
     		
-		private String MessageText; 
+// 		private String MessageText; 
     		
-		private Boolean MessageRead;
+// 		private Boolean MessageRead;
 
 } 

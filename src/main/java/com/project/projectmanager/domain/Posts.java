@@ -1,22 +1,22 @@
-package com.project.projectmanager.domain;;
+package com.project.projectmanager.domain;
 
 
 
-import com.project.projectmanager.domain.Member;
-import com.project.projectmanager.domain.Teams;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+// import com.project.projectmanager.domain.Member;
+// import com.project.projectmanager.domain.Teams;
+// import lombok.AllArgsConstructor;
+// import lombok.Builder;
+// import lombok.Data;
+// import lombok.NoArgsConstructor;
+import java.time.LocalDateTime;
 
-
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
-@Entity
-@Table(name="posts")
-pubic  class Posts{
+// @Data
+// @AllArgsConstructor
+// @NoArgsConstructor
+// @Builder
+// @Entity
+// @Table(name="posts")
+public  class Posts{
 
  	// @Id
 	// @GeneratedValue(strategy =GenerationType.SEQUENCE,generator= "post_id_seq)
@@ -24,11 +24,11 @@ pubic  class Posts{
   	
 		// @ManyToOne(cascade = CascadeType.ALL)
     	// @JoinColumn(name = "member_id")
-    	Member fkAuthorID;
+    //	Member fkAuthorID;
   
 	// @ManyToOne(cascade = CascadeType.ALL)
     // 	@JoinColumn(name = "team_id")
-    	Teams fkTeamID;
+    //	Teams fkTeamID;
   	
 	// @ManyToOne(cascade = CascadeType.ALL)
     // 	@JoinColumn(name = "post_id")
