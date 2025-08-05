@@ -14,7 +14,7 @@ package com.project.projectmanager.domain;
 // @Builder
 // @Entity
 // @Table(name="teams")
-public class Teams{
+public class TeamsEntity{
 
 
  //	@Id

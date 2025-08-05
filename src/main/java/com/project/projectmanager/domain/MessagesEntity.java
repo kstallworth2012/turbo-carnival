@@ -15,7 +15,7 @@ package com.project.projectmanager.domain;
 // @Builder
 // @Entity
 // @Table(name="Messages")
-public class Messages{
+public class MessagesEntity{
 	// @Id
 	// @GeneratedValue(strategy =GenerationType.SEQUENCE,generator= "message_id_seq)
 // 	private Long id;

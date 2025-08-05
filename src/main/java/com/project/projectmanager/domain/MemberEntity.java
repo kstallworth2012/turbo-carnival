@@ -12,7 +12,7 @@ package com.project.projectmanager.domain;
 // @Builder
 // @Entity
 // @Table(name="Member")
-public class Member{
+public class MemberEntity{
 
  	// //@Id
 	// //@GeneratedValue(strategy =GenerationType.SEQUENCE,generator= "member_id_seq)

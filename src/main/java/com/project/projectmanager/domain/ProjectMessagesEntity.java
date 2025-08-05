@@ -12,4 +12,4 @@ package com.project.projectmanager.domain;
 // @Builder
 // @Entity
 // @Table(name="projectmessages")
-public class ProjectMessages{}
+public class ProjectMessagesEntity{}

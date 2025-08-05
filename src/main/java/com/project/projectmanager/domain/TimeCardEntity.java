@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 // @Builder
 // @Entity
 // @Table(name="timecards")
-public class TimeCard{
+public class TimeCardEntity{
 
 
  	// @Id

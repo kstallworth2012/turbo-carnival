@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 // @Builder
 // @Entity
 // @Table(name="tasks")
-public class Task{
+public class TaskEntity{
 
  	//@Id
 	//@GeneratedValue(strategy =GenerationType.SEQUENCE,generator= "task_id_seq)

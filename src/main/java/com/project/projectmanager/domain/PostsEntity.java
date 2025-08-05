@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 // @Builder
 // @Entity
 // @Table(name="posts")
-public  class Posts{
+public  class PostsEntity{
 
  	// @Id
 	// @GeneratedValue(strategy =GenerationType.SEQUENCE,generator= "post_id_seq)

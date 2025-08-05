@@ -15,7 +15,7 @@ package com.project.projectmanager.domain;
 // @Builder
 // @Entity
 // @Table(name="teammembers")
-public class TeamMember{
+public class TeamMemberEntitys{
 
  	// @Id
 	// @GeneratedValue(strategy =GenerationType.SEQUENCE,generator= "team_member_id_seq)
