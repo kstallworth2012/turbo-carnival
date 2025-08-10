@@ -8,17 +8,27 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.ManyToOne;
 
-// @Data
-// @AllArgsConstructor
-// @NoArgsConstructor
-// @Builder
-// @Entity
-// @Table(name="timecards")
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Id;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+@Entity
+@Table(name="timecards")
 public class TimeCardEntity{
 
 
- 	// @Id
+ 	@Id
 	// @GeneratedValue(strategy =GenerationType.SEQUENCE,generator= time_card"_id_seq)
 	private Long id;
 
