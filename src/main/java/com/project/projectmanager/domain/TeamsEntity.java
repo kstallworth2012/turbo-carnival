@@ -1,7 +1,7 @@
 package com.project.projectmanager.domain;
 
 
-// import com.project.projectmanager.domain.TeamMember;
+import com.project.projectmanager.domain.TeamMemberEntitys;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -30,9 +30,9 @@ public class TeamsEntity{
 //	@GeneratedValue(strategy =GenerationType.SEQUENCE,generator= "team_id_seq)
 	private Long id;
     	
-//		@ManyToOne(cascade = CascadeType.ALL)
-  // 	@JoinColumn(name = "team_member_id)
-  //  TeamMember fkTeamLeaderID;
+		@ManyToOne(cascade = CascadeType.ALL)
+  	@JoinColumn(name = "team_member_id")
+   	TeamMemberEntitys fkTeamLeaderID;
    	
 	private String Name;
    	
