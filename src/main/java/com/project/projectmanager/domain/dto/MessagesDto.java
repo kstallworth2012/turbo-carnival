@@ -1,11 +1,12 @@
 package com.project.projectmanager.domain.dto;
 
 
-import com.project.projectmanager.domain.MemberEntitys;
+import com.project.projectmanager.domain.MemberEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import java.time.LocalDateTime;
 
 
 @Data
@@ -20,7 +21,7 @@ public class MessagesDto{
     	// MemberEntity fkMessageToMemberID;
 	
 
-   		private MemberEntitys fkMessageFromMemberID;
+   		private MemberEntity fkMessageFromMemberID;
     	
 		private LocalDateTime MessageDate;
     		
