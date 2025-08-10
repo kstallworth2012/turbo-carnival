@@ -1,8 +1,8 @@
 package com.project.projectmanager.domain;
 
 
-import com.project.projectmanager.domain.Task;
-import com.project.projectmanager.domain.Member;
+import com.project.projectmanager.domain.TaskEntity;
+import com.project.projectmanager.domain.MemberEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -32,13 +32,13 @@ public class TimeCardEntity{
 	// @GeneratedValue(strategy =GenerationType.SEQUENCE,generator= time_card"_id_seq)
 	private Long id;
 
-    // @ManyToOne(cascade = CascadeType.ALL)
-    // @JoinColumn(name = "task_id")
-    //fkTaskID;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "task_id")
+    TaskEntity fkTaskID;
     
-    // @ManyToOne(cascade = CascadeType.ALL)
-    // @JoinColumn(name = "member_id")
-    //fkMemberID;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "member_id")
+    MemberEntity fkMemberID;
 
     LocalDateTime TimeCardDate;
     private String WorkDescription;

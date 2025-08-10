@@ -6,7 +6,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 
-// @Data
-// @AllArgsConstructor
-// @NoArgsConstructor
-// @Builder
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+public class PostsDto{
+	
+}
