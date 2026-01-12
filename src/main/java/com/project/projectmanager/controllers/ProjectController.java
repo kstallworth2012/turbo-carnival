@@ -17,7 +17,7 @@ package com.project.projectmanager.controllers;
 // import java.util.List; 
 // import java.util.Optional;
 
-// @RestController
+@RestController
 // @RequestMapping("/api/projects") 
 public class ProjectController{}
 
