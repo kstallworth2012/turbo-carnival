@@ -3,7 +3,8 @@ package com.project.projectmanager.services.impl;
 
 import com.project.projectmanager.services.TeamsService;
 import com.project.projectmanager.domain.TeamsEntity;
-import com.project.projectmanager.repositories.TeamsRepository;
+import com.project.projectmanager.repositories.TeamsRespository;
+// import com.project.projectmanager.repositories
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
@@ -12,7 +13,7 @@ import org.springframework.data.domain.Pageable;
 import java.util.Optional;
 
 
-
+import org.springframework.stereotype.Service;
 
 @Service
 public class TeamsServiceImpl implements TeamsService {

@@ -8,12 +8,14 @@ import java.util.Optional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+
+
 public interface TeamsService{
 
 
 
 
-	TeamsEntity createTeams(String teamName, Teams _team);
+	TeamsEntity createTeams(String teamName, TeamsEntity _team);
      
     List<TeamsEntity> findAll();
 
