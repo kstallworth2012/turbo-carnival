@@ -1,8 +1,8 @@
 package com.project.projectmanager.repositories;
 
-// import org.springframework.data.repository.CrudRepository;
-// import org.springframework.stereotype.Repository;
+import com.project.projectmanager.domain.TeamsEntity;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
-// @Repository
-public interface TeamsRespository{}
-//  extends CrudRepository<Teams,Long>{}
+@Repository
+public interface TeamsRespository extends CrudRepository<TeamsEntity,Long>{}

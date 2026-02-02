@@ -1,21 +1,31 @@
 package com.project.projectmanager.services;
 
 
-// import com.project.projectmanager.domain.Teams;
+import com.project.projectmanager.domain.TeamsEntity;
 
-// import java.util.List;
-// import java.util.Optional;
+import java.util.List;
+import java.util.Optional;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 public interface TeamsService{
 
 
 
 
-	// Teams createTeams(String teamName, Teams _team);
+	TeamsEntity createTeams(String teamName, Teams _team);
      
-    // List<Team> findAll();
+    List<TeamsEntity> findAll();
 
-    // Optional<Team> findOne(String _teamName);
+    Optional<TeamsEntity> findOne(String _teamName);
 	
-	// boolean isExists(String _teamName);
+	boolean isExists(String _teamName);
+
+
+	    //This is pagenation .... look in repository package
+    Page<TeamsEntity> findAll(Pageable _pageable);
+
+    TeamsEntity partialUpdate(String taskName, TeamsEntity _task);
+
+    void delete(String _taskName);
 }
