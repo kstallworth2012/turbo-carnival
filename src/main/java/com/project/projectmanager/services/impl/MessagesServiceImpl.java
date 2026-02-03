@@ -3,8 +3,7 @@ package com.project.projectmanager.services.impl;
 
 import com.project.projectmanager.services.MessagesService;
 import com.project.projectmanager.domain.MessagesEntity;
-// import com.project.projectmanager.repositories.MessageRespository;
-import com.project.projectmanager.repositories.MessageRespository;
+import com.project.projectmanager.repositories.MessageRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import java.util.List;
@@ -18,9 +17,9 @@ import java.util.stream.StreamSupport;
 @Service
 public class MessagesServiceImpl implements MessagesService {
 
-	private MessageRespository messageRepository;
+	private MessageRepository messageRepository;
 			
-	public MessagesServiceImpl(MessageRespository _messageRepository){
+	public MessagesServiceImpl(MessageRepository _messageRepository){
 		super();
 		this.messageRepository = _messageRepository;
 	}
@@ -42,7 +41,7 @@ public class MessagesServiceImpl implements MessagesService {
 
 
 	@Override
-	public MessagesEntity partialUpdate(String _message_id, MessagesEntity _message );
+	public MessagesEntity partialUpdate(String _message_id, MessagesEntity _message ) {return null;}
 
 	@Override
 	public void delete(String _message_id) {
