@@ -1,23 +1,33 @@
 package com.project.projectmanager.services;
 
-// import com.project.projectmanager.domain.Messages;
-// import java.util.List;
-// import java.util.Optional;
+
+import com.project.projectmanager.domain.MessagesEntity;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import java.util.List;
+import java.util.Optional;
 
 public interface MessagesService{
 
 
-	// Messages createMessages(String messagesName, Messages _message);
+
+
+	MessagesEntity createMessages(String messagesName, MessagesEntity _message);
      
-    // List<Messages> findAll();
+    List<MessagesEntity> findAll();
 
-    // Optional<Messages> findOne(String _messagesName);
+
+    Page<MessagesEntity> findAll(Pageable pageable);
+
+
+    Optional<MessagesEntity> findOne(String _messagesName);
 	
-	// boolean isExists(String _messagesName);
 
+	boolean isExists(String _message_id);
 
+	MessagesEntity partialUpdate(String _message_id, MessagesEntity _message );
 
-
+	void delete(String _message_id);
 
 
 }

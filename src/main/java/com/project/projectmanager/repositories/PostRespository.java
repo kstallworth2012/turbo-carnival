@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 import com.project.projectmanager.domain.PostsEntity;
 
 
-// @Repository
+@Repository
 public interface PostRespository extends CrudRepository<PostsEntity,Long>{}
