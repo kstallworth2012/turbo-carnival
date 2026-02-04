@@ -2,31 +2,29 @@ package com.project.projectmanager.mappers.impl;
 
 
 
-// import    com.project.projectmanager.domain.dto
-// import    com.project.projectmanager.domain
-// import    com.project.projectmanager.mappers.Mapper;
-// import org.modelMapper.ModelMapper;
+ import    com.project.projectmanager.domain.dto.TeamsDto;
+ import    com.project.projectmanager.domain.TeamsEntity;
+ import    com.project.projectmanager.mappers.Mapper;
+ import org.modelmapper.ModelMapper;
 
 
 // @Component
-public class TeamMapperImpl {}
-
-
-// implements Mapper<domain object, Dto>{
+public class TeamMapperImpl implements Mapper<TeamsEntity, TeamsDto>{
 	
-//     private ModelMapper modelMapper;
+     private ModelMapper model_Mapper;
 
-//     public MapperImpl(ModelMapper _modelMapper){
-//         this.modelMapper = _modelMapper; 
-//     }
-// 	@Override
-// 	public Dto mapTo(Domin object){
-// 	    return modelMapper.map(domainObject, Dto.class);
-// 	}
+     public TeamMapperImpl(ModelMapper _modelMapper){
+         this.model_Mapper = _modelMapper; 
+     }
+     
+ 	@Override
+ 	public TeamsDto mapTo(TeamsEntity object){
+ 	    return model_Mapper.map(object, TeamsDto.class);
+ 	}
 
 
-// 	@Override 
-// 	public domainObject mapFrom(DTO dto){
-// 	   return modelMapper.map(Dto, domainObject);
-// 	}
-// }
+ 	@Override 
+ 	public TeamsEntity mapFrom(TeamsDto dto){
+ 	   return model_Mapper.map(dto, TeamsEntity.class);
+ 	}
+ }
