@@ -2,32 +2,29 @@ package com.project.projectmanager.mappers.impl;
 
 
 
-// import    com.project.projectmanager.domain.dto
-// import    com.project.projectmanager.domain
-// import    com.project.projectmanager.mappers.Mapper;
-// import org.modelMapper.ModelMapper;
+ import    com.project.projectmanager.domain.dto.MessagesDto;
+ import    com.project.projectmanager.domain.MessagesEntity;
+ import    com.project.projectmanager.mappers.Mapper;
+ import org.modelmapper.ModelMapper;
 
 
 // @Component
-public class MessagesMapperImpl{}
-
-
-
-//  implements Mapper<domain object, Dto>{
+public class MessagesMapperImpl implements Mapper<MessagesEntity, MessagesDto>{
 	
-//     private ModelMapper modelMapper;
+     private ModelMapper model_Mapper;
 
-//     public MapperImpl(ModelMapper _modelMapper){
-//         this.modelMapper = _modelMapper; 
-//     }
-// 	@Override
-// 	public Dto mapTo(Domin object){
-// 	    return modelMapper.map(domainObject, Dto.class);
-// 	}
+     public MessagesMapperImpl(ModelMapper _modelMapper){
+         this.model_Mapper = _modelMapper; 
+     }
+     
+ 	@Override
+ 	public MessagesDto mapTo(MessagesEntity object){
+ 	    return model_Mapper.map(object, MessagesDto.class);
+ 	}
 
 
-// 	@Override 
-// 	public domainObject mapFrom(DTO dto){
-// 	   return modelMapper.map(Dto, domainObject);
-// 	}
-// }
+ 	@Override 
+ 	public MessagesEntity mapFrom(MessagesDto dto){
+ 	   return model_Mapper.map(dto, MessagesEntity.class);
+ 	}
+ }

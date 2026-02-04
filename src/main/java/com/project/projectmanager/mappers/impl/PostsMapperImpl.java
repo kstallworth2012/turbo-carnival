@@ -2,31 +2,28 @@ package com.project.projectmanager.mappers.impl;
 
 
 
-// import    com.project.projectmanager.domain.dto
-// import    com.project.projectmanager.domain
-// import    com.project.projectmanager.mappers.Mapper;
-// import org.modelMapper.ModelMapper;
+ import    com.project.projectmanager.domain.dto.PostsDto;
+ import    com.project.projectmanager.domain.PostsEntity;
+ import    com.project.projectmanager.mappers.Mapper;
+ import org.modelmapper.ModelMapper;
 
 
 // @Component
-public class PostsMapperImpl {}
-
-
-// implements Mapper<domain object, Dto>{
+public class PostsMapperImpl implements Mapper<PostsEntity, PostsDto>{
 	
-//     private ModelMapper modelMapper;
+     private ModelMapper model_Mapper;
 
-//     public MapperImpl(ModelMapper _modelMapper){
-//         this.modelMapper = _modelMapper; 
-//     }
-// 	@Override
-// 	public Dto mapTo(Domin object){
-// 	    return modelMapper.map(domainObject, Dto.class);
-// 	}
+     public PostsMapperImpl(ModelMapper _modelMapper){
+         this.model_Mapper = _modelMapper; 
+     }
+ 	@Override
+ 	public PostsDto mapTo(PostsEntity object){
+ 	    return model_Mapper.map(object, PostsDto.class);
+ 	}
 
 
-// 	@Override 
-// 	public domainObject mapFrom(DTO dto){
-// 	   return modelMapper.map(Dto, domainObject);
-// 	}
-// }
+ 	@Override 
+ 	public PostsEntity mapFrom(PostsDto dto){
+ 	   return model_Mapper.map(dto, PostsEntity.class);
+ 	}
+ }
