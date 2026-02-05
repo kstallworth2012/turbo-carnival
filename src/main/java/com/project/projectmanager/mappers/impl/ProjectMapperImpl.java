@@ -6,10 +6,11 @@ package com.project.projectmanager.mappers.impl;
  import    com.project.projectmanager.domain.ProjectEntity;
  import    com.project.projectmanager.mappers.Mapper;
  import org.modelmapper.ModelMapper;
+import org.springframework.stereotype.Component;
 
 
 
-// @Component
+ @Component
 public class ProjectMapperImpl implements Mapper<ProjectEntity, ProjectDto>{
 	
      private ModelMapper model_Mapper;

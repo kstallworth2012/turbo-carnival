@@ -6,9 +6,10 @@ package com.project.projectmanager.mappers.impl;
  import    com.project.projectmanager.domain.MessagesEntity;
  import    com.project.projectmanager.mappers.Mapper;
  import org.modelmapper.ModelMapper;
+import org.springframework.stereotype.Component;
 
 
-// @Component
+ @Component
 public class MessagesMapperImpl implements Mapper<MessagesEntity, MessagesDto>{
 	
      private ModelMapper model_Mapper;

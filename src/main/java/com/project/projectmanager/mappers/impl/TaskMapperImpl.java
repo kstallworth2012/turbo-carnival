@@ -6,10 +6,11 @@
  import    com.project.projectmanager.domain.TaskEntity;
  import    com.project.projectmanager.mappers.Mapper;
  import    org.modelmapper.ModelMapper;
+import org.springframework.stereotype.Component;
 
 
 
-// @Component
+ @Component
 public class TaskMapperImpl implements Mapper<TaskEntity, TaskDto>{
 	
      private ModelMapper modelMapper;
