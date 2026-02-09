@@ -17,7 +17,7 @@ import com.project.projectmanager.domain.dto.TaskDto;
 import com.project.projectmanager.mappers.Mapper;
 import com.project.projectmanager.services.TaskService;
 
-import jakarta.validation.Valid;
+//import jakarta.validation.Valid;
  import org.springframework.http.HttpStatus;
  import java.util.ArrayList; 
  import java.util.List; 

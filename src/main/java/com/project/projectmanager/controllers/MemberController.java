@@ -1,38 +1,45 @@
 package com.project.projectmanager.controllers;
 
-// import org.springframework.web.bind.annotation.RestController;
-// import org.springframework.web.bind.annotation.GetMapping;
-// import org.springframework.web.bind.annotation.PostMapping;
-// import org.springframework.web.bind.annotation.PutMapping;
-// import org.springframework.web.bind.annotation.DeleteMapping;
-// import org.springframework.web.bind.annotation.RequestMapping;
-// import org.springframework.web.bind.annotation.RestController;
-// import org.springframework.web.bind.annotation.PathVariable;
-// import org.springframework.web.bind.annotation.RequestBody; 
-// import org.springframework.web.bind.annotation.ResponseStatus;
-// import org.springframework.web.server.ResponseStatusException;
+ import org.springframework.web.bind.annotation.RestController;
+ import org.springframework.web.bind.annotation.GetMapping;
+ import org.springframework.web.bind.annotation.PostMapping;
+ import org.springframework.web.bind.annotation.PutMapping;
+ import org.springframework.web.bind.annotation.DeleteMapping;
+ import org.springframework.web.bind.annotation.RequestMapping;
+ import org.springframework.web.bind.annotation.RestController;
+ import org.springframework.web.bind.annotation.PathVariable;
+ import org.springframework.web.bind.annotation.RequestBody; 
+ import org.springframework.web.bind.annotation.ResponseStatus;
+ import org.springframework.web.server.ResponseStatusException;
+
+import com.project.projectmanager.domain.MemberEntity;
+import com.project.projectmanager.domain.dto.MemberDto;
+import com.project.projectmanager.mappers.Mapper;
+import com.project.projectmanager.services.MemberService;
+
 // import jakarta.validation.Valid;
-// import org.springframework.http.HttpStatus;
-// import java.util.ArrayList; 
-// import java.util.List; 
-// import java.util.Optional;
+ import org.springframework.http.HttpStatus;
+ import java.util.ArrayList; 
+ import java.util.List; 
+ import java.util.Optional;
 
 
 
 
-// @RestController
-// @RequestMapping("/api/members") 
-public class MemberController{}
+@RestController
+@RequestMapping("/api/members") 
+public class MemberController{
 
 
-// priivate MemberService memberService;
+private MemberService memberService;
+private Mapper<MemberEntity, MemberDto> memberMapper;
 
+ public MemberController(MemberService _memberService, Mapper<MemberEntity, MemberDto> _memberMapper){
+     this.memberService = _memberService;
+     this.memberMapper = _memberMapper;
+ }
 
-// public MemberController(MemberService _memberService){
-//     this.memberService = _memberService;
-// }
-
-
+}
 
 // /*
 // //find all members in all projects
