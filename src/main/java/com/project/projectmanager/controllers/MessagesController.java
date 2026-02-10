@@ -12,8 +12,7 @@ package com.project.projectmanager.controllers;
  import org.springframework.web.bind.annotation.ResponseStatus;
  import org.springframework.web.server.ResponseStatusException;
 
-import com.insurance.insuranceApplication.domain.Applicant;
-import com.insurance.insuranceApplication.domain.dto.ApplicantDto;
+
 import com.project.projectmanager.domain.MessagesEntity;
 import com.project.projectmanager.domain.dto.MessagesDto;
 import com.project.projectmanager.mappers.Mapper;
