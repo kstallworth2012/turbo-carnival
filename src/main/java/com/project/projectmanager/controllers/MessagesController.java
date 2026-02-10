@@ -12,12 +12,15 @@ package com.project.projectmanager.controllers;
  import org.springframework.web.bind.annotation.ResponseStatus;
  import org.springframework.web.server.ResponseStatusException;
 
-
+import com.insurance.insuranceApplication.domain.Applicant;
+import com.insurance.insuranceApplication.domain.dto.ApplicantDto;
 import com.project.projectmanager.domain.MessagesEntity;
 import com.project.projectmanager.domain.dto.MessagesDto;
 import com.project.projectmanager.mappers.Mapper;
 import com.project.projectmanager.services.MessagesService;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 // import jakarta.validation.Valid;
  import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -51,6 +54,34 @@ public class MessagesController{
 			
 			return new ResponseEntity<>(messageMapper.mapTo(savedMessageEntity), HttpStatus.CREATED);
  		}
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	//	@GetMapping(path="/")
+//	public List<MessagesDto> listMessages(){
+//		List<MessagesEntity> messages = messageService.findAll();
+//		return applicants.stream()
+//				.map(messagesMapper::mapTo)
+//				.collect(Collectors.toList());
+//	}
+	
+	
+	//PAGEABLE
+	@GetMapping(path="/")
+	public Page<MessagesDto> listMessages(Pageable page){
+		Page<MessagesEntity> messages = messageService.findAll(page);
+		return messages.map(messageMapper::mapTo);
+	}
+	
+ 	
+ 	
+ 	
+ 	
+ 	
 	
  	}
 

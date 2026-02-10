@@ -1,21 +1,21 @@
 package com.project.projectmanager.services;
 
-// import com.project.projectmanager.domain.Post;
+ import com.project.projectmanager.domain.PostsEntity;
 
-// import java.util.List;
-// import java.util.Optional;
+ import java.util.List;
+ import java.util.Optional;
 
 public interface PostsService{
 
 
 
-	// Post createPost(String postName, Post _post);
+	 PostsEntity createPost(String postName, PostsEntity _post);
      
-    // List<Post> findAll();
+     List<PostsEntity> findAll();
 
-    // Optional<Post> findOne(String _postName);
+     Optional<PostsEntity> findOne(String _postName);
 	
-	// boolean isExists(String _postName);
+	 boolean isExists(String _postName);
 
 
 

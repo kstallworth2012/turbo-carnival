@@ -19,6 +19,8 @@ import com.project.projectmanager.domain.dto.PostsDto;
 import com.project.projectmanager.mappers.Mapper;
 import com.project.projectmanager.services.PostsService;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 // import jakarta.validation.Valid;
  import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -46,16 +48,35 @@ public class PostsController{
  
  
  
- 	@PostMapping(path="/new-applicant")
+ 	@PostMapping(path="/new-post")
 	public ResponseEntity<PostsDto> createPost(@RequestBody PostsDto _post) {
 			PostsEntity postEntity = postMapper.mapFrom(_post);
-			PostsEntity savedPostEntity = postService.createPosts(null, postEntity);
+			PostsEntity savedPostEntity = postService.createPost(null, postEntity);
 			
 			return new ResponseEntity<>(postMapper.mapTo(savedPostEntity), HttpStatus.CREATED);
 	}
 	
  
  
+ 
+// 	@GetMapping(path="/")
+//	public List<PostsDto> listPosts(){
+//		List<PostsEntity> posts = postService.findAll();
+//		return posts.stream()
+//				.map(postMapper::mapTo)
+//				.collect(Collectors.toList());
+//	}
+	
+	
+	//PAGEABLE
+	@GetMapping(path="/")
+	public Page<PostsDto> listPosts(Pageable page){
+		Page<PostsEntity> posts = postService.findAll(page);
+		return posts.map(postMapper::mapTo);
+	}
+	
+
+ 	 
  
  
  
