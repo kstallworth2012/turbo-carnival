@@ -12,6 +12,8 @@ package com.project.projectmanager.controllers;
  import org.springframework.web.bind.annotation.ResponseStatus;
  import org.springframework.web.server.ResponseStatusException;
 
+import com.insurance.insuranceApplication.domain.Applicant;
+import com.insurance.insuranceApplication.domain.dto.ApplicantDto;
 import com.project.projectmanager.domain.PostsEntity;
 import com.project.projectmanager.domain.dto.PostsDto;
 import com.project.projectmanager.mappers.Mapper;
@@ -19,7 +21,9 @@ import com.project.projectmanager.services.PostsService;
 
 // import jakarta.validation.Valid;
  import org.springframework.http.HttpStatus;
- import java.util.ArrayList; 
+import org.springframework.http.ResponseEntity;
+
+import java.util.ArrayList; 
  import java.util.List; 
  import java.util.Optional;
 //
@@ -37,6 +41,28 @@ public class PostsController{
      this.postService = _postService;
      this.postMapper = _postMapper;
  	}
+ 
+ 
+ 
+ 
+ 
+ 	@PostMapping(path="/new-applicant")
+	public ResponseEntity<PostsDto> createPost(@RequestBody PostsDto _post) {
+			PostsEntity postEntity = postMapper.mapFrom(_post);
+			PostsEntity savedPostEntity = postService.createPosts(null, postEntity);
+			
+			return new ResponseEntity<>(postMapper.mapTo(savedPostEntity), HttpStatus.CREATED);
+	}
+	
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
 }
 
 // /*

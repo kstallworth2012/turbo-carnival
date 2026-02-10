@@ -2,7 +2,8 @@ package com.project.projectmanager.controllers;
 
  import org.springframework.web.bind.annotation.RestController;
  import org.springframework.web.bind.annotation.GetMapping;
- import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PostMapping;
  import org.springframework.web.bind.annotation.PutMapping;
  import org.springframework.web.bind.annotation.DeleteMapping;
  import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,14 +13,19 @@ package com.project.projectmanager.controllers;
  import org.springframework.web.bind.annotation.ResponseStatus;
  import org.springframework.web.server.ResponseStatusException;
 
+
 import com.project.projectmanager.domain.TaskEntity;
 import com.project.projectmanager.domain.dto.TaskDto;
 import com.project.projectmanager.mappers.Mapper;
 import com.project.projectmanager.services.TaskService;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 //import jakarta.validation.Valid;
  import org.springframework.http.HttpStatus;
- import java.util.ArrayList; 
+import org.springframework.http.ResponseEntity;
+
+import java.util.ArrayList; 
  import java.util.List; 
  import java.util.Optional;
 
@@ -42,6 +48,118 @@ public class TaskController{
      this.taskMapper = _taskMapper;
  }
      
+ 
+ 
+  
+  	@PostMapping(path="/new-task")
+	public ResponseEntity<TaskDto> createTask(@RequestBody TaskDto _task) {
+			TaskEntity taskEntity = taskMapper.mapFrom(_task);
+			TaskEntity savedTaskEntity = taskService.createTask(null, taskEntity);
+			
+			return new ResponseEntity<>(taskMapper.mapTo(savedTaskEntity), HttpStatus.CREATED);
+	}
+  
+ 
+ 
+ 
+ 
+ //	@GetMapping(path="/")
+//	public List<TaskDto> listTasks(){
+//		List<TaskEntity> tasks = taskService.findAll();
+//		return tasks.stream()
+//				.map(applicantMapper::mapTo)
+//				.collect(Collectors.toList());
+//	}
+	
+	
+	//PAGEABLE
+	@GetMapping(path="/")
+	public Page<TaskDto> listTasks(Pageable page){
+		Page<TaskEntity> tasks = taskService.findAll(page);
+		return tasks.map(taskMapper::mapTo);
+	}
+	
+ 
+ 
+ 
+ 
+  
+  
+  	@GetMapping(path = "/{id}")
+	public ResponseEntity<TaskDto> getTask(@PathVariable("id") String id){
+		  Optional<TaskEntity> foundTask = taskService.findOne(id);
+		  
+		  
+		  return foundTask.map(taskEntity -> {
+			  		TaskDto taskDto = taskMapper.mapTo(taskEntity);
+			  		return new ResponseEntity<>(taskDto, HttpStatus.OK);
+					  
+		  }).orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+	}
+	
+  
+  
+  
+  
+  
+ 
+   
+    
+    @PutMapping(path="/{id}")
+	public ResponseEntity<TaskDto> fullUpdateTask(@PathVariable("id") String id, @RequestBody TaskDto taskDto){
+		
+		if(!taskService.isExists(id)) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+			
+		}
+		
+		taskDto.setId(id);
+		TaskEntity taskEntity = taskMapper.mapFrom(taskDto);
+		TaskEntity savedTaskEntity = taskService.save(taskEntity);
+		
+		return new ResponseEntity<>(taskMapper.mapTo(savedTaskEntity), HttpStatus.OK); 
+		
+	}	
+	
+    
+    
+    
+    
+    
+   
+     	@PatchMapping(path ="{/id}")
+	public ResponseEntity<TaskDto> partialUpdate(@PathVariable("id") String id, @RequestBody TaskDto taskDto){
+		
+		if(!taskService.isExists(id)) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+			
+		}
+		
+		TaskEntity taskEntity = taskMapper.mapFrom(taskDto);
+		TaskEntity updatedTask = taskService.partialUpdate(id, taskEntity);
+		
+		return new ResponseEntity<>(taskMapper.mapTo(updatedTask), HttpStatus.OK);
+		
+		
+		
+	}
+	
+	@DeleteMapping(path="/{id}")
+	public ResponseEntity<TaskDto> deleteApplicant(@PathVariable("id") String id) {
+		
+		taskService.delete(id);
+		
+		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+	}
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
  
  		}
  

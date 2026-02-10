@@ -12,6 +12,7 @@ package com.project.projectmanager.controllers;
  import org.springframework.web.bind.annotation.ResponseStatus;
  import org.springframework.web.server.ResponseStatusException;
 
+
 import com.project.projectmanager.domain.MessagesEntity;
 import com.project.projectmanager.domain.dto.MessagesDto;
 import com.project.projectmanager.mappers.Mapper;
@@ -19,7 +20,9 @@ import com.project.projectmanager.services.MessagesService;
 
 // import jakarta.validation.Valid;
  import org.springframework.http.HttpStatus;
- import java.util.ArrayList; 
+import org.springframework.http.ResponseEntity;
+
+import java.util.ArrayList; 
  import java.util.List; 
  import java.util.Optional;
 
@@ -38,7 +41,18 @@ public class MessagesController{
      this.messageMapper = _messageMapper;
  	}
  
-}
+
+
+
+ 	@PostMapping(path="/new-message")
+	public ResponseEntity<MessagesDto> createMessage(@RequestBody MessagesDto _message) {
+			MessagesEntity messageEntity = messageMapper.mapFrom(_message);
+			MessagesEntity savedMessageEntity = messageService.createMessages(null, messageEntity);
+			
+			return new ResponseEntity<>(messageMapper.mapTo(savedMessageEntity), HttpStatus.CREATED);
+ 		}
+	
+ 	}
 
 
 // /*
