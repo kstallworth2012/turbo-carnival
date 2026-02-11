@@ -13,8 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
  import org.springframework.web.bind.annotation.ResponseStatus;
  import org.springframework.web.server.ResponseStatusException;
 
-import com.insurance.insuranceApplication.domain.Applicant;
-import com.insurance.insuranceApplication.domain.dto.ApplicantDto;
+
 import com.project.projectmanager.domain.TimeCardEntity;
 import com.project.projectmanager.domain.dto.TimeCardDto;
 import com.project.projectmanager.mappers.Mapper;
@@ -47,91 +46,91 @@ private Mapper<TimeCardEntity,TimeCardDto> timeCardMapper;
  } 
 
  
- /*
  
  
  
  
  
-	@PostMapping(path="/new-applicant")
-	public ResponseEntity<ApplicantDto> createApplicant(@RequestBody ApplicantDto _app) {
-			Applicant appEntity = applicantMapper.mapFrom(_app);
-			Applicant savedApplicantEntity = appService.createApplicant(null, appEntity);
+ 
+	@PostMapping(path="/new-timecard")
+	public ResponseEntity<TimeCardDto> createTimeCard(@RequestBody TimeCardDto _timeCard) {
+			TimeCardEntity timeCardEntity = timeCardMapper.mapFrom(_timeCard);
+			TimeCardEntity savedTimeCardEntity = timecardService.createTimeCard(null, timeCardEntity);
 			
-			return new ResponseEntity<>(applicantMapper.mapTo(savedApplicantEntity), HttpStatus.CREATED);
+			return new ResponseEntity<>(timeCardMapper.mapTo(savedTimeCardEntity), HttpStatus.CREATED);
 	}
 	
 //	@GetMapping(path="/")
-//	public List<ApplicantDto> listApplicants(){
-//		List<Applicant> applicants = appService.findAll();
-//		return applicants.stream()
-//				.map(applicantMapper::mapTo)
+//	public List<TimeCardDto> listTimeCards(){
+//		List<TimeCardEntity> timeCards = timeCardService.findAll();
+//		return timeCards.stream()
+//				.map(timeCardMapper::mapTo)
 //				.collect(Collectors.toList());
 //	}
 	
 	
 	//PAGEABLE
 	@GetMapping(path="/")
-	public Page<ApplicantDto> listApplicants(Pageable page){
-		Page<Applicant> applicants = appService.findAll(page);
-		return applicants.map(applicantMapper::mapTo);
+	public Page<TimeCardDto> listTimeCards(Pageable page){
+		Page<TimeCardEntity> timeCards = timeCardService.findAll(page);
+		return timeCards.map(timeCardMapper::mapTo);
 	}
 	
 	
 	
 	 
 	@GetMapping(path = "/{id}")
-	public ResponseEntity<ApplicantDto> getApplicant(@PathVariable("id") String id){
-		  Optional<Applicant> foundApplicant = appService.findOne(id);
+	public ResponseEntity<TimeCardDto> getTimeCard(@PathVariable("id") String id){
+		  Optional<TimeCardEntity> foundTimeCard = timeCardService.findOne(id);
 		  
 		  
-		  return foundApplicant.map(appEntity -> {
-			  		ApplicantDto appDto = applicantMapper.mapTo(appEntity);
-			  		return new ResponseEntity<>(appDto, HttpStatus.OK);
+		  return foundTimeCard.map(timeCardEntity -> {
+			  		TimeCardDto timeCardDto = timeCardMapper.mapTo(timeCardEntity);
+			  		return new ResponseEntity<>(timeCardDto, HttpStatus.OK);
 					  
 		  }).orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
 	}
 	
 	
 	@PutMapping(path="/{id}")
-	public ResponseEntity<ApplicantDto> fullUpdateApplicant(@PathVariable("id") String id, @RequestBody ApplicantDto appDto){
+	public ResponseEntity<TimeCardDto> fullUpdateTimeCard(@PathVariable("id") String id, @RequestBody TimeCardDto timeCardDto){
 		
-		if(!appService.isExists(id)) {
+		if(!timeCardService.isExists(id)) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 			
 		}
 		
-		appDto.setId(id);
-		Applicant applicantEntity = applicantMapper.mapFrom(appDto);
-		Applicant savedApplicantEntity = appService.save(applicantEntity);
+		timeCardDto.setId(id);
+		TimeCardEntity timeCardEntity = timeCardMapper.mapFrom(timeCardDto);
+		TimeCardEntity savedTimeCardEntity = timeCardService.save(timeCardEntity);
 		
-		return new ResponseEntity<>(applicantMapper.mapTo(savedApplicantEntity), HttpStatus.OK); 
+		return new ResponseEntity<>(timeCardMapper.mapTo(savedTimeCardEntity), HttpStatus.OK); 
 		
 	}	
 	
 	
 	
 	@PatchMapping(path ="{/id}")
-	public ResponseEntity<ApplicantDto> partialUpdate(@PathVariable("id") String id, @RequestBody ApplicantDto appDto){
+	public ResponseEntity<TimeCardDto> partialUpdate(@PathVariable("id") String id, @RequestBody TimeCardDto timeCardDto){
 		
-		if(!appService.isExists(id)) {
+		if(!timeCardService.isExists(id)) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 			
 		}
 		
-		Applicant applicantEntity = applicantMapper.mapFrom(appDto);
-		Applicant updatedApplicant = appService.partialUpdate(id, applicantEntity);
+		TimeCardEntity timeCardEntity = timeCardMapper.mapFrom(timeCardDto);
+		TimeCardEntity updatedTimeCard = timeCardService.partialUpdate(id, timeCardEntity);
 		
-		return new ResponseEntity<>(applicantMapper.mapTo(updatedApplicant), HttpStatus.OK);
+		return new ResponseEntity<>(timeCardMapper.mapTo(updatedTimeCard), HttpStatus.OK);
 		
 		
 		
 	}
 	
 	@DeleteMapping(path="/{id}")
-	public ResponseEntity<ApplicantDto> deleteApplicant(@PathVariable("id") String id) {
+	public ResponseEntity<TimeCardDto> deleteApplicant(@PathVariable("id") String id) {
 		
-		appService.delete(id);
+		timeCardService.delete(id);
 		
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
@@ -141,62 +140,7 @@ private Mapper<TimeCardEntity,TimeCardDto> timeCardMapper;
  
  
  
- */
+ 
  
 
  }
-
-// //find all members in all projects
-// //@GetMapping("api/tasks")
-// @GetMapping("")
-// List<Tasks> findAll(){
-//    return .findAll(); 
-// }
-
-
-// @GetMapping("/{id}")
-// Tasks findById(@PathVariable Integer id){
-    
-// @Optional<> _ = TasksRepository.findById(id);
-// if(_.isEmpty()){
-
-// 	throw new RespponseStatusException(HttpStatus.NOT_FOUND,"Task not found.");
-// }
-//   return _member.get();
-
-//   //  return membersRepository.findById(id).get();
-
-// }
-
-
-// //post
-// @ResponseStatus(HttpStatus.CREATED)  //201 status
-// @PostMapping("")
-// public TimeCardDto createTimeCard(@RequestBody TimeCardDto _timecardDTO){
-
-//     return timecardService.createTimecard(_timecardDTO);
-
-
-// }
-
-
-
-
-// //put
-// @ResponseStatus(HttpStatus.NO_CONTENT)  //
-// @PutMapping("/{id}")
-// void updateTask(@RequestBody Object _object,Integer _id){
-
-//     Repository.update__(_object,_id);
-
-
-// }
-// //delete
-// @ResponseStatus(HttpStatus.NO_CONTENT)  //
-// @PutMapping("/{id}")
-// void delete__(@RequestBody Object _object ,Integer _id){
-
-//     //.delete(_,_id);
-
-
-// }

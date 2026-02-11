@@ -50,87 +50,87 @@ public class TeamMemberController{
  
  
  
-/*
+
  
  
  
-	@PostMapping(path="/new-applicant")
-	public ResponseEntity<ApplicantDto> createApplicant(@RequestBody ApplicantDto _app) {
-			Applicant appEntity = applicantMapper.mapFrom(_app);
-			Applicant savedApplicantEntity = appService.createApplicant(null, appEntity);
+	@PostMapping(path="/new-team-member")
+	public ResponseEntity<TeamMemberDto> createTeamMember(@RequestBody TeamMemberDto _teamMember) {
+			TeamMemberEntitys teamMemberEntity = teamMemberMapper.mapFrom(_teamMember);
+			TeamMemberEntitys savedTeamMemberEntity = teamMemberService.createTeamMember(null, teamMemberEntity);
 			
-			return new ResponseEntity<>(applicantMapper.mapTo(savedApplicantEntity), HttpStatus.CREATED);
+			return new ResponseEntity<>(teamMemberMapper.mapTo(savedTeamMemberEntity), HttpStatus.CREATED);
 	}
 	
 //	@GetMapping(path="/")
-//	public List<ApplicantDto> listApplicants(){
-//		List<Applicant> applicants = appService.findAll();
-//		return applicants.stream()
-//				.map(applicantMapper::mapTo)
+//	public List<TeamMemberDto> listTeamMembers(){
+//		List<TeamMemberEntitys> teamMembers = teamMemberService.findAll();
+//		return teamMembers.stream()
+//				.map(teamMemberMapper::mapTo)
 //				.collect(Collectors.toList());
 //	}
 	
 	
 	//PAGEABLE
 	@GetMapping(path="/")
-	public Page<ApplicantDto> listApplicants(Pageable page){
-		Page<Applicant> applicants = appService.findAll(page);
-		return applicants.map(applicantMapper::mapTo);
+	public Page<TeamMemberDto> listTeamMembers(Pageable page){
+		Page<TeamMemberEntitys> teamMembers = teamMemberService.findAll(page);
+		return teamMembers.map(teamMemberMapper::mapTo);
 	}
 	
 	
 	
 	 
 	@GetMapping(path = "/{id}")
-	public ResponseEntity<ApplicantDto> getApplicant(@PathVariable("id") String id){
-		  Optional<Applicant> foundApplicant = appService.findOne(id);
+	public ResponseEntity<TeamMemberDto> getTeamMember(@PathVariable("id") String id){
+		  Optional<TeamMemberEntitys> foundTeamMember = teamMemberService.findOne(id);
 		  
 		  
-		  return foundApplicant.map(appEntity -> {
-			  		ApplicantDto appDto = applicantMapper.mapTo(appEntity);
-			  		return new ResponseEntity<>(appDto, HttpStatus.OK);
+		  return foundTeamMember.map(teamMemberEntity -> {
+			  		TeamMemberDto teamMemberDto = teamMemberMapper.mapTo(teamMemberEntity);
+			  		return new ResponseEntity<>(teamMemberDto, HttpStatus.OK);
 					  
 		  }).orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
 	}
 	
 	
 	@PutMapping(path="/{id}")
-	public ResponseEntity<ApplicantDto> fullUpdateApplicant(@PathVariable("id") String id, @RequestBody ApplicantDto appDto){
+	public ResponseEntity<TeamMemberDto> fullUpdateTeamMember(@PathVariable("id") String id, @RequestBody TeamMemberDto teamMemberDto){
 		
-		if(!appService.isExists(id)) {
+		if(!teamMemberService.isExists(id)) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 			
 		}
 		
-		appDto.setId(id);
-		Applicant applicantEntity = applicantMapper.mapFrom(appDto);
-		Applicant savedApplicantEntity = appService.save(applicantEntity);
+		teamMemberDto.setId(id);
+		TeamMemberEntitys teamMemberEntity = teamMemberMapper.mapFrom(teamMemberDto);
+		TeamMemberEntitys savedTeamMemberEntity = teamMemberService.save(teamMemberEntity);
 		
-		return new ResponseEntity<>(applicantMapper.mapTo(savedApplicantEntity), HttpStatus.OK); 
+		return new ResponseEntity<>(teamMemberMapper.mapTo(savedTeamMemberEntity), HttpStatus.OK); 
 		
 	}	
 	
 	
 	
 	@PatchMapping(path ="{/id}")
-	public ResponseEntity<ApplicantDto> partialUpdate(@PathVariable("id") String id, @RequestBody ApplicantDto appDto){
+	public ResponseEntity<TeamMemberDto> partialUpdate(@PathVariable("id") String id, @RequestBody TeamMemberDto teamMemberDto){
 		
-		if(!appService.isExists(id)) {
+		if(!teamMemberService.isExists(id)) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 			
 		}
 		
-		Applicant applicantEntity = applicantMapper.mapFrom(appDto);
-		Applicant updatedApplicant = appService.partialUpdate(id, applicantEntity);
+		TeamMemberEntitys teamMemberEntity = teamMemberMapper.mapFrom(teamMemberDto);
+		TeamMemberEntitys updatedTeamMember = teamMemberService.partialUpdate(id, teamMemberEntity);
 		
-		return new ResponseEntity<>(applicantMapper.mapTo(updatedApplicant), HttpStatus.OK);
+		return new ResponseEntity<>(teamMemberMapper.mapTo(updatedTeamMember), HttpStatus.OK);
 		
 		
 		
 	}
 	
 	@DeleteMapping(path="/{id}")
-	public ResponseEntity<ApplicantDto> deleteApplicant(@PathVariable("id") String id) {
+	public ResponseEntity<TeamMemberDto> deleteTeamMember(@PathVariable("id") String id) {
 		
 		appService.delete(id);
 		
@@ -140,7 +140,7 @@ public class TeamMemberController{
  
  
  
- */
+ 
  
  }
 
