@@ -2,7 +2,8 @@ package com.project.projectmanager.controllers;
 
  import org.springframework.web.bind.annotation.RestController;
  import org.springframework.web.bind.annotation.GetMapping;
- import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PostMapping;
  import org.springframework.web.bind.annotation.PutMapping;
  import org.springframework.web.bind.annotation.DeleteMapping;
  import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,8 +13,7 @@ package com.project.projectmanager.controllers;
  import org.springframework.web.bind.annotation.ResponseStatus;
  import org.springframework.web.server.ResponseStatusException;
 
-import com.insurance.insuranceApplication.domain.Applicant;
-import com.insurance.insuranceApplication.domain.dto.ApplicantDto;
+
 import com.project.projectmanager.domain.PostsEntity;
 import com.project.projectmanager.domain.dto.PostsDto;
 import com.project.projectmanager.mappers.Mapper;
@@ -78,6 +78,68 @@ public class PostsController{
 
  	 
  
+ 
+
+	
+	
+	 
+	@GetMapping(path = "/{id}")
+	public ResponseEntity<PostsDto> getPost(@PathVariable("id") String id){
+		  Optional<PostsEntity> foundPost = postService.findOne(id);
+		  
+		  
+		  return foundPost.map(postEntity -> {
+			  		PostsDto postDto = postMapper.mapTo(postEntity);
+			  		return new ResponseEntity<>(postDto, HttpStatus.OK);
+					  
+		  }).orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+	}
+	
+	
+	@PutMapping(path="/{id}")
+	public ResponseEntity<PostsDto> fullUpdatePost(@PathVariable("id") String id, @RequestBody PostsDto postDto){
+		
+		if(!postService.isExists(id)) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+			
+		}
+		
+		postDto.setId(id);
+		PostsEntity PostEntity = postMapper.mapFrom(postDto);
+		PostsEntity savedPostEntity = postService.save(PostEntity);
+		
+		return new ResponseEntity<>(postMapper.mapTo(savedPostEntity), HttpStatus.OK); 
+		
+	}	
+	
+	
+	
+	@PatchMapping(path ="{/id}")
+	public ResponseEntity<PostsDto> partialUpdate(@PathVariable("id") String id, @RequestBody PostsDto appDto){
+		
+		if(!postService.isExists(id)) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+			
+		}
+		
+		PostsEntity applicantEntity = postMapper.mapFrom(appDto);
+		PostsEntity updatedApplicant = postService.partialUpdate(id, applicantEntity);
+		
+		return new ResponseEntity<>(applicantMapper.mapTo(updatedApplicant), HttpStatus.OK);
+		
+		
+		
+	}
+	
+	@DeleteMapping(path="/{id}")
+	public ResponseEntity<PostsDto> deleteApplicant(@PathVariable("id") String id) {
+		
+		postService.delete(id);
+		
+		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+	}
+
+  
  
  
  
