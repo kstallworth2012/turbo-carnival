@@ -132,7 +132,7 @@ public class TeamMemberController{
 	@DeleteMapping(path="/{id}")
 	public ResponseEntity<TeamMemberDto> deleteTeamMember(@PathVariable("id") String id) {
 		
-		appService.delete(id);
+		teamMemberService.delete(id);
 		
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}

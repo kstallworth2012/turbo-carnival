@@ -37,11 +37,11 @@ import java.util.ArrayList;
 public class TimeCardController{
 
 
- private TimeCardService timecardService;
+ private TimeCardService timeCardService;
 private Mapper<TimeCardEntity,TimeCardDto> timeCardMapper;
 
  public TimeCardController(TimeCardService _timecardService,Mapper<TimeCardEntity,TimeCardDto> _timeCardMapper){
-     this.timecardService = _timecardService;
+     this.timeCardService = _timecardService;
      this.timeCardMapper = _timeCardMapper;
  } 
 
@@ -55,7 +55,7 @@ private Mapper<TimeCardEntity,TimeCardDto> timeCardMapper;
 	@PostMapping(path="/new-timecard")
 	public ResponseEntity<TimeCardDto> createTimeCard(@RequestBody TimeCardDto _timeCard) {
 			TimeCardEntity timeCardEntity = timeCardMapper.mapFrom(_timeCard);
-			TimeCardEntity savedTimeCardEntity = timecardService.createTimeCard(null, timeCardEntity);
+			TimeCardEntity savedTimeCardEntity = timeCardService.createTimeCard(null, timeCardEntity);
 			
 			return new ResponseEntity<>(timeCardMapper.mapTo(savedTimeCardEntity), HttpStatus.CREATED);
 	}

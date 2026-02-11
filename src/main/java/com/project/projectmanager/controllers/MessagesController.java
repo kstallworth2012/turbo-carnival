@@ -2,7 +2,8 @@ package com.project.projectmanager.controllers;
 
  import org.springframework.web.bind.annotation.RestController;
  import org.springframework.web.bind.annotation.GetMapping;
- import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PostMapping;
  import org.springframework.web.bind.annotation.PutMapping;
  import org.springframework.web.bind.annotation.DeleteMapping;
  import org.springframework.web.bind.annotation.RequestMapping;
@@ -76,6 +77,83 @@ public class MessagesController{
 		return messages.map(messageMapper::mapTo);
 	}
 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+	 
+	@GetMapping(path = "/{id}")
+	public ResponseEntity<MessagesDto> getMessages(@PathVariable("id") String id){
+		  Optional<MessagesEntity> foundMessages = messageService.findOne(id);
+		  
+		  
+		  return foundMessages.map(messagesEntity -> {
+			  		MessagesDto messagesDto = messageMapper.mapTo(messagesEntity);
+			  		return new ResponseEntity<>(messagesDto, HttpStatus.OK);
+					  
+		  }).orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+	}
+	
+	
+	@PutMapping(path="/{id}")
+	public ResponseEntity<MessagesDto> fullUpdateMessages(@PathVariable("id") String id, @RequestBody MessagesDto messagesDto){
+		
+		if(!messageService.isExists(id)) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+			
+		}
+		
+		messagesDto.setId(id);
+		MessagesEntity messagesEntity = messageMapper.mapFrom(messagesDto);
+		MessagesEntity savedMessagesEntity = messageService.save(messagesEntity);
+		
+		return new ResponseEntity<>(messageMapper.mapTo(savedMessagesEntity), HttpStatus.OK); 
+		
+	}	
+	
+	
+	
+	@PatchMapping(path ="{/id}")
+	public ResponseEntity<MessagesDto> partialUpdate(@PathVariable("id") String id, @RequestBody MessagesDto messagesDto){
+		
+		if(!messageService.isExists(id)) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+			
+		}
+		
+		MessagesEntity messagesEntity = messageMapper.mapFrom(messagesDto);
+		MessagesEntity updatedMessages = messageService.partialUpdate(id, messagesEntity);
+		
+		return new ResponseEntity<>(messageMapper.mapTo(updatedMessages), HttpStatus.OK);
+		
+		
+		
+	}
+	
+	@DeleteMapping(path="/{id}")
+	public ResponseEntity<MessagesDto> deleteMessage(@PathVariable("id") String id) {
+		
+		messageService.delete(id);
+		
+		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+	}
+
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
  	
  	
  	

@@ -2,7 +2,8 @@ package com.project.projectmanager.controllers;
 
  import org.springframework.web.bind.annotation.RestController;
  import org.springframework.web.bind.annotation.GetMapping;
- import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PostMapping;
  import org.springframework.web.bind.annotation.PutMapping;
  import org.springframework.web.bind.annotation.DeleteMapping;
  import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,11 +13,18 @@ package com.project.projectmanager.controllers;
  import org.springframework.web.bind.annotation.ResponseStatus;
  import org.springframework.web.server.ResponseStatusException;
 
+
+import com.project.projectmanager.domain.TeamsEntity;
+import com.project.projectmanager.domain.dto.TeamsDto;
 import com.project.projectmanager.mappers.Mapper;
+import com.project.projectmanager.services.PostsService;
+import com.project.projectmanager.services.TeamsService;
 
 // import jakarta.validation.Valid;
  import org.springframework.http.HttpStatus;
- import java.util.ArrayList; 
+import org.springframework.http.ResponseEntity;
+
+import java.util.ArrayList; 
  import java.util.List; 
  import java.util.Optional;
 
@@ -26,69 +34,73 @@ import com.project.projectmanager.mappers.Mapper;
 public class TeamController{
 
 
- private TeamService teamService;
- private Mapper<TeamEntity, TeamDto> teamMapper;
+ private TeamsService teamService;
+ private Mapper<TeamsEntity, TeamsDto> teamMapper;
 
- public TeamController(TeamService _teamService,Mapper<TeamEntity, TeamDto> _teamMapper){
+ public TeamController(TeamsService _teamService,Mapper<TeamsEntity, TeamsDto> _teamMapper){
      this.teamService = _teamService;
  	 this.teamMapper = _teamMapper;
  }
 
 
 
+	 
+	@GetMapping(path = "/{id}")
+	public ResponseEntity<TeamsDto> getTeam(@PathVariable("id") String id){
+		  Optional<TeamsEntity> foundTeam = teamService.findOne(id);
+		  
+		  
+		  return foundTeam.map(teamEntity -> {
+			  		TeamsDto teamDto = teamMapper.mapTo(teamEntity);
+			  		return new ResponseEntity<>(teamDto, HttpStatus.OK);
+					  
+		  }).orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+	}
+	
+	
+	@PutMapping(path="/{id}")
+	public ResponseEntity<TeamsDto> fullUpdateTeam(@PathVariable("id") String id, @RequestBody TeamsDto teamDto){
+		
+		if(!teamService.isExists(id)) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+			
+		}
+		
+		teamDto.setId(id);
+		TeamsEntity teamEntity = teamMapper.mapFrom(teamDto);
+		TeamsEntity savedTeamEntity = teamService.save(teamEntity);
+		
+		return new ResponseEntity<>(teamMapper.mapTo(savedTeamEntity), HttpStatus.OK); 
+		
+	}	
+	
+	
+	
+	@PatchMapping(path ="{/id}")
+	public ResponseEntity<TeamsDto> partialUpdate(@PathVariable("id") String id, @RequestBody TeamsDto teamDto){
+		
+		if(!teamService.isExists(id)) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+			
+		}
+		
+		TeamsEntity teamEntity = teamMapper.mapFrom(teamDto);
+		TeamsEntity updatedTeam = teamService.partialUpdate(id, teamEntity);
+		
+		return new ResponseEntity<>(teamMapper.mapTo(updatedTeam), HttpStatus.OK);
+		
+		
+		
+	}
+	
+	@DeleteMapping(path="/{id}")
+	public ResponseEntity<TeamsDto> deleteApplicant(@PathVariable("id") String id) {
+		
+		teamService.delete(id);
+		
+		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+	}
+
+ 
+
  }
-// //find all members in all projects
-// //@GetMapping("api/tasks")
-// @GetMapping("")
-// List<Tasks> findAll(){
-//    return .findAll(); 
-// }
-
-
-// @GetMapping("/{id}")
-// Tasks findById(@PathVariable Integer id){
-    
-// @Optional<> _ = TasksRepository.findById(id);
-// if(_.isEmpty()){
-
-// 	throw new RespponseStatusException(HttpStatus.NOT_FOUND,"Task not found.");
-// }
-//   return _member.get();
-
-//   //  return membersRepository.findById(id).get();
-
-// }
-
-
-// //post
-// @ResponseStatus(HttpStatus.CREATED)  //201 status
-// @PostMapping("")
-// public TeamDto create(@RequestBody TeamDto _teamDTO){
-
-//     return teamService.create(_teamDTO);
-
-
-// }
-
-
-
-
-
-// //put
-// @ResponseStatus(HttpStatus.NO_CONTENT)  //
-// @PutMapping("/{id}")
-// void updateTask(@RequestBody Object _object,Integer _id){
-
-//     Repository.update__(_object,_id);
-
-
-// }
-// //delete
-// @ResponseStatus(HttpStatus.NO_CONTENT)  //
-// @PutMapping("/{id}")
-// void delete__(@RequestBody Object _object ,Integer _id){
-
-//     //.delete(_,_id);
-
-
-// }
