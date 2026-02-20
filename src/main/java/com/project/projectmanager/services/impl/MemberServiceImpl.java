@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 
 import com.project.projectmanager.domain.TeamMemberEntitys;
+import com.project.projectmanager.repositories.MemberRespository;
 import com.project.projectmanager.services.MemberService;
 
 
@@ -17,10 +18,19 @@ import com.project.projectmanager.services.MemberService;
 @Service
 public class MemberServiceImpl implements MemberService{
 
+	private MemberRespository memberRepository;
+	
+	
+	
+	
+	public MemberServiceImpl(MemberRespository _memberRepository) {
+		this.memberRepository = _memberRepository;
+	}
+
 	@Override
 	public TeamMemberEntitys createTeamMember(String teamMemberName, TeamMemberEntitys _teamMemberName) {
 		// TODO Auto-generated method stub
-		return null;
+		return memberRepository.save(_teamMemberName);
 	}
 
 	@Override

@@ -11,6 +11,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.project.projectmanager.domain.TimeCardEntity;
+import com.project.projectmanager.repositories.TimeCardRespository;
 import com.project.projectmanager.services.TimeCardService;
 
 
@@ -19,6 +20,16 @@ import com.project.projectmanager.services.TimeCardService;
 
 @Service
 public class TimeCardServiceImpl implements TimeCardService{
+
+	
+	private TimeCardRespository timeCardRePO;
+	
+	
+	
+	
+	public TimeCardServiceImpl(TimeCardRespository _timeCardRePO) {
+		this.timeCardRePO = _timeCardRePO;
+	}
 
 	@Override
 	public TimeCardEntity createTimeCard(String _timecard_id, TimeCardEntity _timeCard) {

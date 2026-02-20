@@ -10,12 +10,26 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.project.projectmanager.domain.PostsEntity;
+import com.project.projectmanager.repositories.PostRespository;
 import com.project.projectmanager.services.PostsService;
 
 
 
 @Service
 public class PotsServiceImpl implements PostsService {
+
+	
+	
+	private PostRespository postRepository;
+	
+	
+	
+	
+	
+	
+	public PotsServiceImpl(PostRespository _postRepository) {
+		this.postRepository = _postRepository;
+	}
 
 	@Override
 	public PostsEntity createPost(String postName, PostsEntity _post) {
