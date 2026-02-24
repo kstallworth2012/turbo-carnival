@@ -34,7 +34,8 @@ public class TeamsServiceImpl implements TeamsService {
      
     @Override
     public List<TeamsEntity> findAll(){
-    	return null; 
+    	return StreamSupport.stream(teamsRepository.findAll()
+				.spliterator(), false).collect(Collectors.toList()); 
     }
     
     @Override
@@ -60,4 +61,10 @@ public class TeamsServiceImpl implements TeamsService {
     public void delete(String _teamName){
     			System.out.println("DELETE TEAM "+_teamName);
     }
+
+	@Override
+	public TeamsEntity save(TeamsEntity _teams) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

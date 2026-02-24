@@ -8,6 +8,7 @@ import org.springframework.data.domain.Pageable;
 import com.project.projectmanager.services.ProjectService;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
@@ -32,7 +33,8 @@ public class ProjectServiceImpl implements ProjectService {
 	
 	@Override
 	public List<ProjectEntity> findAll(){
-		return null;
+		return StreamSupport.stream(projectRepository.findAll()
+				.spliterator(), false).collect(Collectors.toList());
 	}
 	
 	@Override
@@ -59,6 +61,13 @@ public class ProjectServiceImpl implements ProjectService {
 	public void delete(String project_id){
 	
         System.out.println("DELETE PROJECT"); 
+	}
+
+
+	@Override
+	public ProjectEntity save(ProjectEntity _project) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 

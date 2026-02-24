@@ -5,6 +5,7 @@ package com.project.projectmanager.services.impl;
  import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -34,13 +35,14 @@ public class TimeCardServiceImpl implements TimeCardService{
 	@Override
 	public TimeCardEntity createTimeCard(String _timecard_id, TimeCardEntity _timeCard) {
 		// TODO Auto-generated method stub
-		return null;
+		return timeCardRePO.save(_timeCard);
 	}
 
 	@Override
 	public List<TimeCardEntity> findAll() {
 		// TODO Auto-generated method stub
-		return null;
+		return StreamSupport.stream(timeCardRePO.findAll()
+				.spliterator(), false).collect(Collectors.toList());
 	}
 
 	@Override
@@ -58,7 +60,7 @@ public class TimeCardServiceImpl implements TimeCardService{
 	@Override
 	public boolean isExists(String _timeCard) {
 		// TODO Auto-generated method stub
-		return false;
+		return timeCardRePO.existsById(null);
 	}
 
 	@Override
@@ -70,7 +72,13 @@ public class TimeCardServiceImpl implements TimeCardService{
 	@Override
 	public void delete(String timeCard_id) {
 		// TODO Auto-generated method stub
-		
+		timeCardRePO.deleteById(null);
+	}
+
+	@Override
+	public TimeCardEntity save(TimeCardEntity _timeCard) {
+		// TODO Auto-generated method stub
+		return timeCardRePO.save(_timeCard);
 	}
 	
 }

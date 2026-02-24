@@ -48,15 +48,15 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public Optional<MemberEntity> findOne(String _TeamMemberName) {
+	public Optional<MemberEntity> findOne(Long _memberName) {
 		// TODO Auto-generated method stub
-		return Optional.empty();
+		return memberRepository.findById(_memberName);
 	}
 
 	@Override
-	public boolean isExists(String _teamMemberName) {
+	public boolean isExists(Long _memberName) {
 		// TODO Auto-generated method stub
-		return false;
+		return memberRepository.existsById(_memberName);
 	}
 
 	@Override
@@ -66,8 +66,9 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public void delete(String team_member_id) {
+	public void delete(Long member_id) {
 		// TODO Auto-generated method stub
+		memberRepository.deleteById(member_id);
 		
 	}
 
@@ -80,6 +81,9 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public MemberEntity save(MemberEntity _member) {
 		// TODO Auto-generated method stub
-		return null;
-	}}
+		return memberRepository.save(_member);
+	}
+	
+
+}
 

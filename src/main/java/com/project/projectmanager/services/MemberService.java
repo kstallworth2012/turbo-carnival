@@ -18,13 +18,14 @@ public interface MemberService{
      
     List<MemberEntity> findAll();
 
-    Optional<MemberEntity> findOne(String _MemberName);
+    Optional<MemberEntity> findOne(Long _MemberName);
 	
-	boolean isExists(String MemberName);
+	boolean isExists(Long MemberName);
+	
 	Page<MemberEntity> findAll(Pageable _pageable);
 
 	MemberEntity partialUpdate(String _member_id, MemberEntity memberEntity );
 
-	void delete(String team_member_id);
+	void delete(Long team_member_id);
 
 }
