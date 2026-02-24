@@ -14,6 +14,8 @@ public interface TaskService{
 
 
 	TaskEntity createTask(String taskName, TaskEntity _task);
+	
+	TaskEntity save(TaskEntity _task);
      
     List<TaskEntity> findAll();
 

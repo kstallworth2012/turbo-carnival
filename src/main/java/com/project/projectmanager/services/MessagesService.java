@@ -13,6 +13,7 @@ public interface MessagesService{
 
 
 	MessagesEntity createMessages(String messagesName, MessagesEntity _message);
+	
      
     List<MessagesEntity> findAll();
 
@@ -23,11 +24,13 @@ public interface MessagesService{
     Optional<MessagesEntity> findOne(String _messagesName);
 	
 
-	boolean isExists(String _message_id);
+	boolean isExists(Long id);
 
-	MessagesEntity partialUpdate(String _message_id, MessagesEntity _message );
+	MessagesEntity partialUpdate(Long id, MessagesEntity _message );
 
 	void delete(String _message_id);
+
+	MessagesEntity save(MessagesEntity messagesEntity);
 
 
 }

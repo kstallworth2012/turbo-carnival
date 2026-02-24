@@ -11,6 +11,8 @@ import java.util.Optional;
 public interface ProjectService{
 
 	ProjectEntity createUpdateProject(String project_id, ProjectEntity projectEntity);
+	
+	ProjectEntity save(ProjectEntity _project);
 
 	List<ProjectEntity> findAll();
 

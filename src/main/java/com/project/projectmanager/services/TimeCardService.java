@@ -14,6 +14,9 @@ public interface TimeCardService{
 
 
 	 TimeCardEntity createTimeCard(String _timecard_id, TimeCardEntity _timeCard);
+	 
+	 TimeCardEntity save(TimeCardEntity _timeCard);
+	 
 	 List<TimeCardEntity> findAll();
 	 
 	 Optional<TimeCardEntity> findOne(String _timeCard);

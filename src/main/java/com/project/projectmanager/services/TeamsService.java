@@ -16,6 +16,8 @@ public interface TeamsService{
 
 
 	TeamsEntity createTeams(String teamName, TeamsEntity _team);
+	
+	TeamsEntity save(TeamsEntity _teams);
      
     List<TeamsEntity> findAll();
 

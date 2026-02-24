@@ -13,6 +13,8 @@ public interface PostsService{
 
 
 	 PostsEntity createPost(String postName, PostsEntity _post);
+	 
+	 PostsEntity save(PostsEntity _posts);
      
      List<PostsEntity> findAll();
 

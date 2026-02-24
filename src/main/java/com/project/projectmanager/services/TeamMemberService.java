@@ -13,6 +13,8 @@ public interface TeamMemberService{
 
 
 	TeamMemberEntitys createTeamMember(String teamMemberName, TeamMemberEntitys _teamMemberName);
+	
+	TeamMemberEntitys save(TeamMemberEntitys _teamMember);
      
     List<TeamMemberEntitys> findAll();
 

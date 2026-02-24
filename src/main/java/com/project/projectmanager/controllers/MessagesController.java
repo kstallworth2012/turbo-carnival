@@ -99,14 +99,14 @@ public class MessagesController{
 	
 	
 	@PutMapping(path="/{id}")
-	public ResponseEntity<MessagesDto> fullUpdateMessages(@PathVariable("id") String id, @RequestBody MessagesDto messagesDto){
+	public ResponseEntity<MessagesDto> fullUpdateMessages(@PathVariable("id") Long id, @RequestBody MessagesDto messagesDto){
 		
 		if(!messageService.isExists(id)) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 			
 		}
 		
-		messagesDto.setId(id);
+//		messagesDto.setId(id);
 		MessagesEntity messagesEntity = messageMapper.mapFrom(messagesDto);
 		MessagesEntity savedMessagesEntity = messageService.save(messagesEntity);
 		
@@ -117,7 +117,7 @@ public class MessagesController{
 	
 	
 	@PatchMapping(path ="{/id}")
-	public ResponseEntity<MessagesDto> partialUpdate(@PathVariable("id") String id, @RequestBody MessagesDto messagesDto){
+	public ResponseEntity<MessagesDto> partialUpdate(@PathVariable("id") Long id, @RequestBody MessagesDto messagesDto){
 		
 		if(!messageService.isExists(id)) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);

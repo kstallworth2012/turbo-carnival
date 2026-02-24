@@ -81,7 +81,7 @@ private Mapper<MemberEntity, MemberDto> memberMapper;
 		  Optional<MemberEntity> foundMember = memberService.findOne(id);
 		  
 		  
-		  return foundApplicant.map(appEntity -> {
+		  return foundMember.map(memberEntity -> {
 			  		MemberDto memberDto = memberMapper.mapTo(memberEntity);
 			  		return new ResponseEntity<>(memberDto, HttpStatus.OK);
 					  

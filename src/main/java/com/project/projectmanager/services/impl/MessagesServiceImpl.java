@@ -48,4 +48,10 @@ public class MessagesServiceImpl implements MessagesService {
 
 		System.out.println("Delete Message:  "+ _message_id);
 	}
+
+	@Override
+	public MessagesEntity save(MessagesEntity messagesEntity) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

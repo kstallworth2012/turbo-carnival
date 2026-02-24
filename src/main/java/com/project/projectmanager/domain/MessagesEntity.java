@@ -12,6 +12,8 @@ import jakarta.persistence.ManyToOne;
 
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -26,10 +28,10 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name="messages")
 public class MessagesEntity{
-	// @Id
-	// @GeneratedValue(strategy =GenerationType.SEQUENCE,generator= "message_id_seq)
-	    @Id
-		private Long id;
+	 
+	 @Id
+	 @GeneratedValue(strategy =GenerationType.SEQUENCE,generator= "message_id_seq")
+	 private Long id;
 	
 		// @ManyToOne(cascade = CascadeType.ALL)
     	// @JoinColumn(name = "member_id")

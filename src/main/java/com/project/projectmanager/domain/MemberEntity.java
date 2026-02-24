@@ -25,7 +25,6 @@ import jakarta.persistence.Id;
 public class MemberEntity{
 
  	@Id
-	// //@GeneratedValue(strategy =GenerationType.SEQUENCE,generator= "member_id_seq)
 	private Long id;
 	
 	private String firstName;
