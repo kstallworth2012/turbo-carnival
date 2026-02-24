@@ -33,7 +33,7 @@ public class PostsServiceImpl implements PostsService {
 	}
 
 	@Override
-	public PostsEntity createPost(String postName, PostsEntity _post) {
+	public PostsEntity createPost(Long postName, PostsEntity _post) {
 		// TODO Auto-generated method stub
 		return postRepository.save(_post);
 	}
@@ -46,7 +46,7 @@ public class PostsServiceImpl implements PostsService {
 	}
 
 	@Override
-	public Optional<PostsEntity> findOne(String _postName) {
+	public Optional<PostsEntity> findOne(Long _postName) {
 		// TODO Auto-generated method stub
 		return postRepository.findById(null);
 	}
@@ -58,19 +58,19 @@ public class PostsServiceImpl implements PostsService {
 	}
 
 	@Override
-	public boolean isExists(String _postName) {
+	public boolean isExists(Long _postName) {
 		// TODO Auto-generated method stub
-		return postRepository.existsById(null);
+		return postRepository.existsById(_postName);
 	}
 
 	@Override
-	public PostsEntity partialUpdate(String posts_id, PostsEntity _postsEntity) {
+	public PostsEntity partialUpdate(Long posts_id, PostsEntity _postsEntity) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void delete(String posts_id) {
+	public void delete(Long posts_id) {
 		// TODO Auto-generated method stub
 		postRepository.deleteById(null);
 	}

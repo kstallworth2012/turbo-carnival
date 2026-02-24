@@ -86,7 +86,7 @@ public class TaskController{
   
   
   	@GetMapping(path = "/{id}")
-	public ResponseEntity<TaskDto> getTask(@PathVariable("id") String id){
+	public ResponseEntity<TaskDto> getTask(@PathVariable("id") Long id){
 		  Optional<TaskEntity> foundTask = taskService.findOne(id);
 		  
 		  
@@ -106,14 +106,14 @@ public class TaskController{
    
     
     @PutMapping(path="/{id}")
-	public ResponseEntity<TaskDto> fullUpdateTask(@PathVariable("id") String id, @RequestBody TaskDto taskDto){
+	public ResponseEntity<TaskDto> fullUpdateTask(@PathVariable("id") Long id, @RequestBody TaskDto taskDto){
 		
 		if(!taskService.isExists(id)) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 			
 		}
 		
-		taskDto.setId(id);
+//		taskDto.setId(id);
 		TaskEntity taskEntity = taskMapper.mapFrom(taskDto);
 		TaskEntity savedTaskEntity = taskService.save(taskEntity);
 		
@@ -128,7 +128,7 @@ public class TaskController{
     
    
      	@PatchMapping(path ="{/id}")
-	public ResponseEntity<TaskDto> partialUpdate(@PathVariable("id") String id, @RequestBody TaskDto taskDto){
+	public ResponseEntity<TaskDto> partialUpdate(@PathVariable("id") Long id, @RequestBody TaskDto taskDto){
 		
 		if(!taskService.isExists(id)) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -145,7 +145,7 @@ public class TaskController{
 	}
 	
 	@DeleteMapping(path="/{id}")
-	public ResponseEntity<TaskDto> deleteApplicant(@PathVariable("id") String id) {
+	public ResponseEntity<TaskDto> deleteApplicant(@PathVariable("id") Long id) {
 		
 		taskService.delete(id);
 		

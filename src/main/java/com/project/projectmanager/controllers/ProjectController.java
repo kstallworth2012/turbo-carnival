@@ -46,10 +46,10 @@ private Mapper<ProjectEntity,ProjectDto> projectMapper;
  
  
  
-    	@PostMapping(path="/new-project")
+    @PostMapping(path="/new-project")
 	public ResponseEntity<ProjectDto> createProject(@RequestBody ProjectDto _project) {
 			ProjectEntity projectEntity = projectMapper.mapFrom( _project);
-			ProjectEntity savedProjectEntity =  _project.createApplicant(null, projectEntity);
+			ProjectEntity savedProjectEntity =  projectService.createUpdateProject(null, projectEntity);
 			
 			return new ResponseEntity<>(projectMapper.mapTo(savedProjectEntity), HttpStatus.CREATED);
 	}
@@ -77,7 +77,7 @@ private Mapper<ProjectEntity,ProjectDto> projectMapper;
 	
 	 
 	@GetMapping(path = "/{id}")
-	public ResponseEntity<ProjectDto> getProject(@PathVariable("id") String id){
+	public ResponseEntity<ProjectDto> getProject(@PathVariable("id") Long id){
 		  Optional<ProjectEntity> foundProject = projectService.findOne(id);
 		  
 		  
@@ -90,14 +90,14 @@ private Mapper<ProjectEntity,ProjectDto> projectMapper;
 	
 	
 	@PutMapping(path="/{id}")
-	public ResponseEntity<ProjectDto> fullUpdateProject(@PathVariable("id") String id, @RequestBody ProjectDto projectDto){
+	public ResponseEntity<ProjectDto> fullUpdateProject(@PathVariable("id") Long id, @RequestBody ProjectDto projectDto){
 		
 		if(!projectService.isExists(id)) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 			
 		}
 		
-		projectDto.setId(id);
+//		projectDto.setId(id);
 		ProjectEntity projectEntity = projectMapper.mapFrom(projectDto);
 		ProjectEntity savedProjectEntity = projectService.save(projectEntity);
 		
@@ -108,14 +108,14 @@ private Mapper<ProjectEntity,ProjectDto> projectMapper;
 	
 	
 	@PatchMapping(path ="{/id}")
-	public ResponseEntity<ProjectDto> partialUpdate(@PathVariable("id") String id, @RequestBody ProjectDto projectDto){
+	public ResponseEntity<ProjectDto> partialUpdate(@PathVariable("id") Long id, @RequestBody ProjectDto projectDto){
 		
 		if(!projectService.isExists(id)) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 			
 		}
 		
-		ProjectEntity projectEntity = projectMapper.mapFrom(appDto);
+		ProjectEntity projectEntity = projectMapper.mapFrom(projectDto);
 		ProjectEntity updatedProject = projectService.partialUpdate(id, projectEntity);
 		
 		return new ResponseEntity<>(projectMapper.mapTo(updatedProject), HttpStatus.OK);
@@ -125,7 +125,7 @@ private Mapper<ProjectEntity,ProjectDto> projectMapper;
 	}
 	
 	@DeleteMapping(path="/{id}")
-	public ResponseEntity<ProjectDto> deleteProject(@PathVariable("id") String id) {
+	public ResponseEntity<ProjectDto> deleteProject(@PathVariable("id") Long id) {
 		
 		projectService.delete(id);
 		

@@ -33,7 +33,7 @@ public class TimeCardServiceImpl implements TimeCardService{
 	}
 
 	@Override
-	public TimeCardEntity createTimeCard(String _timecard_id, TimeCardEntity _timeCard) {
+	public TimeCardEntity createTimeCard(Long _timecard_id, TimeCardEntity _timeCard) {
 		// TODO Auto-generated method stub
 		return timeCardRePO.save(_timeCard);
 	}
@@ -46,33 +46,33 @@ public class TimeCardServiceImpl implements TimeCardService{
 	}
 
 	@Override
-	public Optional<TimeCardEntity> findOne(String _timeCard) {
+	public Optional<TimeCardEntity> findOne(Long _timeCard) {
 		// TODO Auto-generated method stub
 		return Optional.empty();
 	}
 
 	@Override
-	public Page<TimeCardEntity> finadAll(Pageable pageable) {
+	public Page<TimeCardEntity> findAll(Pageable pageable) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public boolean isExists(String _timeCard) {
+	public boolean isExists(Long _timeCard) {
 		// TODO Auto-generated method stub
-		return timeCardRePO.existsById(null);
+		return timeCardRePO.existsById(_timeCard);
 	}
 
 	@Override
-	public TimeCardEntity partialUpdate(String timeCard_id, TimeCardEntity _timeCardEntity) {
+	public TimeCardEntity partialUpdate(Long timeCard_id, TimeCardEntity _timeCardEntity) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void delete(String timeCard_id) {
+	public void delete(Long timeCard_id) {
 		// TODO Auto-generated method stub
-		timeCardRePO.deleteById(null);
+		timeCardRePO.deleteById(timeCard_id);
 	}
 
 	@Override

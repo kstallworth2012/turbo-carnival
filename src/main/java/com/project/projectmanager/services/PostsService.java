@@ -12,21 +12,21 @@ public interface PostsService{
 
 
 
-	 PostsEntity createPost(String postName, PostsEntity _post);
+	 PostsEntity createPost(Long postName, PostsEntity _post);
 	 
 	 PostsEntity save(PostsEntity _posts);
      
      List<PostsEntity> findAll();
 
-     Optional<PostsEntity> findOne(String _postName);
+     Optional<PostsEntity> findOne(Long _postId);
      
      Page<PostsEntity> findAll(Pageable _pageable);
 	
-	 boolean isExists(String _postName);
+	 boolean isExists(Long _postId);
 
-    PostsEntity partialUpdate(String posts_id, PostsEntity _postsEntity);
+    PostsEntity partialUpdate(Long posts_id, PostsEntity _postsEntity);
     
-    void delete(String posts_id);
+    void delete(Long posts_id);
 
 
 }

@@ -46,7 +46,7 @@ public class TeamController{
 
 	 
 	@GetMapping(path = "/{id}")
-	public ResponseEntity<TeamsDto> getTeam(@PathVariable("id") String id){
+	public ResponseEntity<TeamsDto> getTeam(@PathVariable("id") Long id){
 		  Optional<TeamsEntity> foundTeam = teamService.findOne(id);
 		  
 		  
@@ -59,14 +59,14 @@ public class TeamController{
 	
 	
 	@PutMapping(path="/{id}")
-	public ResponseEntity<TeamsDto> fullUpdateTeam(@PathVariable("id") String id, @RequestBody TeamsDto teamDto){
+	public ResponseEntity<TeamsDto> fullUpdateTeam(@PathVariable("id") Long id, @RequestBody TeamsDto teamDto){
 		
 		if(!teamService.isExists(id)) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 			
 		}
 		
-		teamDto.setId(id);
+//		teamDto.setId(id);
 		TeamsEntity teamEntity = teamMapper.mapFrom(teamDto);
 		TeamsEntity savedTeamEntity = teamService.save(teamEntity);
 		
@@ -77,7 +77,7 @@ public class TeamController{
 	
 	
 	@PatchMapping(path ="{/id}")
-	public ResponseEntity<TeamsDto> partialUpdate(@PathVariable("id") String id, @RequestBody TeamsDto teamDto){
+	public ResponseEntity<TeamsDto> partialUpdate(@PathVariable("id") Long id, @RequestBody TeamsDto teamDto){
 		
 		if(!teamService.isExists(id)) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -94,7 +94,7 @@ public class TeamController{
 	}
 	
 	@DeleteMapping(path="/{id}")
-	public ResponseEntity<TeamsDto> deleteApplicant(@PathVariable("id") String id) {
+	public ResponseEntity<TeamsDto> deleteApplicant(@PathVariable("id") Long id) {
 		
 		teamService.delete(id);
 		

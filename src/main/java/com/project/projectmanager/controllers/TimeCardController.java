@@ -80,7 +80,7 @@ private Mapper<TimeCardEntity,TimeCardDto> timeCardMapper;
 	
 	 
 	@GetMapping(path = "/{id}")
-	public ResponseEntity<TimeCardDto> getTimeCard(@PathVariable("id") String id){
+	public ResponseEntity<TimeCardDto> getTimeCard(@PathVariable("id") Long id){
 		  Optional<TimeCardEntity> foundTimeCard = timeCardService.findOne(id);
 		  
 		  
@@ -93,14 +93,14 @@ private Mapper<TimeCardEntity,TimeCardDto> timeCardMapper;
 	
 	
 	@PutMapping(path="/{id}")
-	public ResponseEntity<TimeCardDto> fullUpdateTimeCard(@PathVariable("id") String id, @RequestBody TimeCardDto timeCardDto){
+	public ResponseEntity<TimeCardDto> fullUpdateTimeCard(@PathVariable("id") Long id, @RequestBody TimeCardDto timeCardDto){
 		
 		if(!timeCardService.isExists(id)) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 			
 		}
 		
-		timeCardDto.setId(id);
+//		timeCardDto.setId(id);
 		TimeCardEntity timeCardEntity = timeCardMapper.mapFrom(timeCardDto);
 		TimeCardEntity savedTimeCardEntity = timeCardService.save(timeCardEntity);
 		
@@ -111,7 +111,7 @@ private Mapper<TimeCardEntity,TimeCardDto> timeCardMapper;
 	
 	
 	@PatchMapping(path ="{/id}")
-	public ResponseEntity<TimeCardDto> partialUpdate(@PathVariable("id") String id, @RequestBody TimeCardDto timeCardDto){
+	public ResponseEntity<TimeCardDto> partialUpdate(@PathVariable("id") Long id, @RequestBody TimeCardDto timeCardDto){
 		
 		if(!timeCardService.isExists(id)) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -128,7 +128,7 @@ private Mapper<TimeCardEntity,TimeCardDto> timeCardMapper;
 	}
 	
 	@DeleteMapping(path="/{id}")
-	public ResponseEntity<TimeCardDto> deleteApplicant(@PathVariable("id") String id) {
+	public ResponseEntity<TimeCardDto> deleteApplicant(@PathVariable("id") Long id) {
 		
 		timeCardService.delete(id);
 		

@@ -13,7 +13,7 @@ import com.project.projectmanager.domain.TaskEntity;
 public interface TaskService{
 
 
-	TaskEntity createTask(String taskName, TaskEntity _task);
+	TaskEntity createTask(Long taskId, TaskEntity _task);
 	
 	TaskEntity save(TaskEntity _task);
      
@@ -22,14 +22,14 @@ public interface TaskService{
     //This is pagenation .... look in repository package
     Page<TaskEntity> findAll(Pageable _pageable);
 
-    Optional<TaskEntity> findOne(String _taskName);
+    Optional<TaskEntity> findOne(Long _taskId);
 
 
-    boolean isExists(String _taskName);
+    boolean isExists(Long _taskName);
 
-    TaskEntity partialUpdate(String taskName, TaskEntity _task);
+    TaskEntity partialUpdate(Long taskID, TaskEntity _task);
 
-    void delete(String _taskName);
+    void delete(Long _taskId);
 
 }
 

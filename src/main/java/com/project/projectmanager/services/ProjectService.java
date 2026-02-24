@@ -10,7 +10,7 @@ import java.util.Optional;
 
 public interface ProjectService{
 
-	ProjectEntity createUpdateProject(String project_id, ProjectEntity projectEntity);
+	ProjectEntity createUpdateProject(Long project_id, ProjectEntity projectEntity);
 	
 	ProjectEntity save(ProjectEntity _project);
 
@@ -18,12 +18,12 @@ public interface ProjectService{
 
 	Page<ProjectEntity> findAll(Pageable pageable);
 
-	Optional<ProjectEntity> findOne(String project_id);
+	Optional<ProjectEntity> findOne(Long project_id);
 
-	boolean isExists(String project_id);
+	boolean isExists(Long project_id);
 
-	ProjectEntity partialUpdate(String project_id, ProjectEntity projectEntity );
+	ProjectEntity partialUpdate(Long project_id, ProjectEntity projectEntity );
 
-	void delete(String project_id);
+	void delete(Long project_id);
 
 }

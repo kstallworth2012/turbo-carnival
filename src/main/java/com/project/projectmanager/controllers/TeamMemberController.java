@@ -13,8 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
  import org.springframework.web.bind.annotation.ResponseStatus;
  import org.springframework.web.server.ResponseStatusException;
 
-import com.insurance.insuranceApplication.domain.Applicant;
-import com.insurance.insuranceApplication.domain.dto.ApplicantDto;
+
 import com.project.projectmanager.domain.TeamMemberEntitys;
 import com.project.projectmanager.domain.dto.TeamMemberDto;
 import com.project.projectmanager.mappers.Mapper;
@@ -82,7 +81,7 @@ public class TeamMemberController{
 	
 	 
 	@GetMapping(path = "/{id}")
-	public ResponseEntity<TeamMemberDto> getTeamMember(@PathVariable("id") String id){
+	public ResponseEntity<TeamMemberDto> getTeamMember(@PathVariable("id") Long id){
 		  Optional<TeamMemberEntitys> foundTeamMember = teamMemberService.findOne(id);
 		  
 		  
@@ -95,14 +94,14 @@ public class TeamMemberController{
 	
 	
 	@PutMapping(path="/{id}")
-	public ResponseEntity<TeamMemberDto> fullUpdateTeamMember(@PathVariable("id") String id, @RequestBody TeamMemberDto teamMemberDto){
+	public ResponseEntity<TeamMemberDto> fullUpdateTeamMember(@PathVariable("id") Long id, @RequestBody TeamMemberDto teamMemberDto){
 		
 		if(!teamMemberService.isExists(id)) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 			
 		}
 		
-		teamMemberDto.setId(id);
+//		teamMemberDto.setId(id);
 		TeamMemberEntitys teamMemberEntity = teamMemberMapper.mapFrom(teamMemberDto);
 		TeamMemberEntitys savedTeamMemberEntity = teamMemberService.save(teamMemberEntity);
 		
@@ -113,7 +112,7 @@ public class TeamMemberController{
 	
 	
 	@PatchMapping(path ="{/id}")
-	public ResponseEntity<TeamMemberDto> partialUpdate(@PathVariable("id") String id, @RequestBody TeamMemberDto teamMemberDto){
+	public ResponseEntity<TeamMemberDto> partialUpdate(@PathVariable("id") Long id, @RequestBody TeamMemberDto teamMemberDto){
 		
 		if(!teamMemberService.isExists(id)) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -130,7 +129,7 @@ public class TeamMemberController{
 	}
 	
 	@DeleteMapping(path="/{id}")
-	public ResponseEntity<TeamMemberDto> deleteTeamMember(@PathVariable("id") String id) {
+	public ResponseEntity<TeamMemberDto> deleteTeamMember(@PathVariable("id") Long id) {
 		
 		teamMemberService.delete(id);
 		

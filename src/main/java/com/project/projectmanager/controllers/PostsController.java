@@ -84,7 +84,7 @@ public class PostsController{
 	
 	 
 	@GetMapping(path = "/{id}")
-	public ResponseEntity<PostsDto> getPost(@PathVariable("id") String id){
+	public ResponseEntity<PostsDto> getPost(@PathVariable("id") Long id){
 		  Optional<PostsEntity> foundPost = postService.findOne(id);
 		  
 		  
@@ -97,14 +97,14 @@ public class PostsController{
 	
 	
 	@PutMapping(path="/{id}")
-	public ResponseEntity<PostsDto> fullUpdatePost(@PathVariable("id") String id, @RequestBody PostsDto postDto){
+	public ResponseEntity<PostsDto> fullUpdatePost(@PathVariable("id") Long id, @RequestBody PostsDto postDto){
 		
 		if(!postService.isExists(id)) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 			
 		}
 		
-		postDto.setId(id);
+//		postDto.setId(id);
 		PostsEntity PostEntity = postMapper.mapFrom(postDto);
 		PostsEntity savedPostEntity = postService.save(PostEntity);
 		
@@ -115,7 +115,7 @@ public class PostsController{
 	
 	
 	@PatchMapping(path ="{/id}")
-	public ResponseEntity<PostsDto> partialUpdate(@PathVariable("id") String id, @RequestBody PostsDto appDto){
+	public ResponseEntity<PostsDto> partialUpdate(@PathVariable("id") Long id, @RequestBody PostsDto appDto){
 		
 		if(!postService.isExists(id)) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -125,14 +125,14 @@ public class PostsController{
 		PostsEntity applicantEntity = postMapper.mapFrom(appDto);
 		PostsEntity updatedApplicant = postService.partialUpdate(id, applicantEntity);
 		
-		return new ResponseEntity<>(applicantMapper.mapTo(updatedApplicant), HttpStatus.OK);
+		return new ResponseEntity<>(postMapper.mapTo(updatedApplicant), HttpStatus.OK);
 		
 		
 		
 	}
 	
 	@DeleteMapping(path="/{id}")
-	public ResponseEntity<PostsDto> deleteApplicant(@PathVariable("id") String id) {
+	public ResponseEntity<PostsDto> deleteApplicant(@PathVariable("id") Long id) {
 		
 		postService.delete(id);
 		

@@ -13,19 +13,19 @@ import org.springframework.data.domain.Pageable;
 public interface TimeCardService{
 
 
-	 TimeCardEntity createTimeCard(String _timecard_id, TimeCardEntity _timeCard);
+	 TimeCardEntity createTimeCard(Long _timecard_id, TimeCardEntity _timeCard);
 	 
 	 TimeCardEntity save(TimeCardEntity _timeCard);
 	 
 	 List<TimeCardEntity> findAll();
 	 
-	 Optional<TimeCardEntity> findOne(String _timeCard);
+	 Optional<TimeCardEntity> findOne(Long _timeCard);
 	 
-	 Page<TimeCardEntity> finadAll(Pageable pageable);
+	 Page<TimeCardEntity> findAll(Pageable pageable);
 	 
-	 boolean isExists(String _timeCard);
+	 boolean isExists(Long _timeCard);
 	 
-	 TimeCardEntity partialUpdate(String timeCard_id, TimeCardEntity _timeCardEntity);
+	 TimeCardEntity partialUpdate(Long timeCard_id, TimeCardEntity _timeCardEntity);
 	 
-	 void delete(String timeCard_id);
+	 void delete(Long timeCard_id);
 }

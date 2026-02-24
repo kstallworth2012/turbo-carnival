@@ -27,8 +27,8 @@ public class ProjectServiceImpl implements ProjectService {
 
 
 	@Override
-	public ProjectEntity createUpdateProject(String project_id, ProjectEntity projectEntity){
-		return null;
+	public ProjectEntity createUpdateProject(Long project_id, ProjectEntity projectEntity){
+		return projectRepository.save(projectEntity);
 	}
 	
 	@Override
@@ -43,22 +43,23 @@ public class ProjectServiceImpl implements ProjectService {
 	}
 	
 	@Override
-	public Optional<ProjectEntity> findOne(String project_id){
+	public Optional<ProjectEntity> findOne(Long project_id){
 		return null;
 	}
 	
 	@Override
-	public boolean isExists(String project_id){
-		return false; 
+	public boolean isExists(Long project_id){
+		return projectRepository.existsById(project_id); 
 	}
 	
 	@Override
-	public ProjectEntity partialUpdate(String project_id, ProjectEntity projectEntity ){
+	public ProjectEntity partialUpdate(Long project_id, ProjectEntity projectEntity ){
 		return null;
 	}
 	
 	@Override
-	public void delete(String project_id){
+	public void delete(Long project_id){
+		projectRepository.deleteById(project_id);
 	
         System.out.println("DELETE PROJECT"); 
 	}
@@ -67,7 +68,7 @@ public class ProjectServiceImpl implements ProjectService {
 	@Override
 	public ProjectEntity save(ProjectEntity _project) {
 		// TODO Auto-generated method stub
-		return null;
+		return projectRepository.save(_project);
 	}
 
 

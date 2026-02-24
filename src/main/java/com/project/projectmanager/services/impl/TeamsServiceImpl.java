@@ -27,9 +27,9 @@ public class TeamsServiceImpl implements TeamsService {
 	}
 
 	@Override
-	public TeamsEntity createTeams(String teamName, TeamsEntity _team){
+	public TeamsEntity createTeams(Long teamName, TeamsEntity _team){
 
-		return null;
+		return teamsRepository.save(_team);
 	}
      
     @Override
@@ -39,12 +39,12 @@ public class TeamsServiceImpl implements TeamsService {
     }
     
     @Override
-    public Optional<TeamsEntity> findOne(String _teamName) {
+    public Optional<TeamsEntity> findOne(Long _teamName) {
     	return null;
     }
 	
 	@Override
-	public boolean isExists(String _teamName){ return false; }
+	public boolean isExists(Long _teamName){ return teamsRepository.existsById(_teamName); }
 
 
 	    //This is pagenation .... look in repository package
@@ -53,18 +53,18 @@ public class TeamsServiceImpl implements TeamsService {
     public Page<TeamsEntity> findAll(Pageable _pageable) {return null; };
     
     @Override
-    public TeamsEntity partialUpdate(String taskName, TeamsEntity _team){
+    public TeamsEntity partialUpdate(Long taskName, TeamsEntity _team){
     	return null;
     };
     
     @Override
-    public void delete(String _teamName){
+    public void delete(Long _teamName){
     			System.out.println("DELETE TEAM "+_teamName);
     }
 
 	@Override
 	public TeamsEntity save(TeamsEntity _teams) {
 		// TODO Auto-generated method stub
-		return null;
+		return teamsRepository.save(_teams);
 	}
 }

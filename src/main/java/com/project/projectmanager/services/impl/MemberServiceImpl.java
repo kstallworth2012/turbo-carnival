@@ -60,7 +60,7 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public MemberEntity partialUpdate(String team_member_id, MemberEntity team_memberEntity) {
+	public MemberEntity partialUpdate(Long team_member_id, MemberEntity team_memberEntity) {
 		// TODO Auto-generated method stub
 		return null;
 	}

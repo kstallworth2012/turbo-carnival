@@ -24,7 +24,7 @@ public interface MemberService{
 	
 	Page<MemberEntity> findAll(Pageable _pageable);
 
-	MemberEntity partialUpdate(String _member_id, MemberEntity memberEntity );
+	MemberEntity partialUpdate(Long _member_id, MemberEntity memberEntity );
 
 	void delete(Long team_member_id);
 

@@ -13,8 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
  import org.springframework.web.bind.annotation.ResponseStatus;
  import org.springframework.web.server.ResponseStatusException;
 
-import com.insurance.insuranceApplication.domain.Applicant;
-import com.insurance.insuranceApplication.domain.dto.ApplicantDto;
+
 import com.project.projectmanager.domain.MemberEntity;
 import com.project.projectmanager.domain.dto.MemberDto;
 import com.project.projectmanager.mappers.Mapper;
@@ -77,7 +76,7 @@ private Mapper<MemberEntity, MemberDto> memberMapper;
 	
 	 
 	@GetMapping(path = "/{id}")
-	public ResponseEntity<MemberDto> getMember(@PathVariable("id") String id){
+	public ResponseEntity<MemberDto> getMember(@PathVariable("id") Long id){
 		  Optional<MemberEntity> foundMember = memberService.findOne(id);
 		  
 		  
@@ -90,14 +89,14 @@ private Mapper<MemberEntity, MemberDto> memberMapper;
 	
 	
 	@PutMapping(path="/{id}")
-	public ResponseEntity<MemberDto> fullUpdateMember(@PathVariable("id") String id, @RequestBody MemberDto memberDto){
+	public ResponseEntity<MemberDto> fullUpdateMember(@PathVariable("id") Long id, @RequestBody MemberDto memberDto){
 		
 		if(!memberService.isExists(id)) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 			
 		}
 		
-		memberDto.setId(id);
+		//memberDto.setId(id);
 		MemberEntity memberEntity = memberMapper.mapFrom(memberDto);
 		MemberEntity savedMemberEntity = memberService.save(memberEntity);
 		
@@ -108,7 +107,7 @@ private Mapper<MemberEntity, MemberDto> memberMapper;
 	
 	
 	@PatchMapping(path ="{/id}")
-	public ResponseEntity<MemberDto> partialUpdate(@PathVariable("id") String id, @RequestBody MemberDto memberDto){
+	public ResponseEntity<MemberDto> partialUpdate(@PathVariable("id") Long id, @RequestBody MemberDto memberDto){
 		
 		if(!memberService.isExists(id)) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -125,7 +124,7 @@ private Mapper<MemberEntity, MemberDto> memberMapper;
 	}
 	
 	@DeleteMapping(path="/{id}")
-	public ResponseEntity<MemberDto> deleteMember(@PathVariable("id") String id) {
+	public ResponseEntity<MemberDto> deleteMember(@PathVariable("id") Long id) {
 		
 		memberService.delete(id);
 		
