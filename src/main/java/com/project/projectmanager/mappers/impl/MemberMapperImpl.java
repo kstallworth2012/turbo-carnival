@@ -9,7 +9,7 @@ package com.project.projectmanager.mappers.impl;
 import org.springframework.stereotype.Component;
 
 
- @Component
+@Component
 public class MemberMapperImpl implements Mapper<MemberEntity, MemberDto> {
 	
      private ModelMapper model_Mapper;

@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.project.projectmanager.domain.MemberEntity;
 import com.project.projectmanager.domain.dto.MemberDto;
 import com.project.projectmanager.mappers.Mapper;
+//import com.project.projectmanager.mappers.Mapper;
 import com.project.projectmanager.services.MemberService;
 
 import org.springframework.data.domain.Page;
@@ -96,7 +97,7 @@ private Mapper<MemberEntity, MemberDto> memberMapper;
 			
 		}
 		
-		//memberDto.setId(id);
+//		memberDto.setId(id);
 		MemberEntity memberEntity = memberMapper.mapFrom(memberDto);
 		MemberEntity savedMemberEntity = memberService.save(memberEntity);
 		
