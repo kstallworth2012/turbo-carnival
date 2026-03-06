@@ -107,7 +107,7 @@ private Mapper<ProjectEntity,ProjectDto> projectMapper;
 	
 	
 	
-	@PatchMapping(path ="{/id}")
+	@PatchMapping(path ="/{id}")
 	public ResponseEntity<ProjectDto> partialUpdate(@PathVariable("id") Long id, @RequestBody ProjectDto projectDto){
 		
 		if(!projectService.isExists(id)) {

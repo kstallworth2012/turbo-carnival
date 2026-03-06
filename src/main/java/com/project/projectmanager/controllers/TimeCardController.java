@@ -110,7 +110,7 @@ private Mapper<TimeCardEntity,TimeCardDto> timeCardMapper;
 	
 	
 	
-	@PatchMapping(path ="{/id}")
+	@PatchMapping(path ="/{id}")
 	public ResponseEntity<TimeCardDto> partialUpdate(@PathVariable("id") Long id, @RequestBody TimeCardDto timeCardDto){
 		
 		if(!timeCardService.isExists(id)) {

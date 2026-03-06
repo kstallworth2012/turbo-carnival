@@ -33,7 +33,7 @@ import java.util.ArrayList;
 
  @RestController
  @RequestMapping("/api/team-members") 
-public class TeamMemberController{
+public class TeamMemberController {
 
 
  private TeamMemberService teamMemberService;
@@ -111,7 +111,7 @@ public class TeamMemberController{
 	
 	
 	
-	@PatchMapping(path ="{/id}")
+	@PatchMapping(path ="/{id}")
 	public ResponseEntity<TeamMemberDto> partialUpdate(@PathVariable("id") Long id, @RequestBody TeamMemberDto teamMemberDto){
 		
 		if(!teamMemberService.isExists(id)) {

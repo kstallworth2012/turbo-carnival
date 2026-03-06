@@ -114,7 +114,7 @@ public class PostsController{
 	
 	
 	
-	@PatchMapping(path ="{/id}")
+	@PatchMapping(path ="/{id}")
 	public ResponseEntity<PostsDto> partialUpdate(@PathVariable("id") Long id, @RequestBody PostsDto appDto){
 		
 		if(!postService.isExists(id)) {

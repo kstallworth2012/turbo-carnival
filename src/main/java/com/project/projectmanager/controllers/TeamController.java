@@ -76,7 +76,7 @@ public class TeamController{
 	
 	
 	
-	@PatchMapping(path ="{/id}")
+	@PatchMapping(path ="/{id}")
 	public ResponseEntity<TeamsDto> partialUpdate(@PathVariable("id") Long id, @RequestBody TeamsDto teamDto){
 		
 		if(!teamService.isExists(id)) {

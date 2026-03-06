@@ -26,14 +26,14 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 
 import java.util.ArrayList; 
- import java.util.List; 
- import java.util.Optional;
+import java.util.List; 
+import java.util.Optional;
 
 
 
 
- @RestController
- @RequestMapping("/api/tasks") 
+@RestController
+@RequestMapping("/api/tasks") 
 public class TaskController{
 
 
@@ -127,7 +127,7 @@ public class TaskController{
     
     
    
-     	@PatchMapping(path ="{/id}")
+     	@PatchMapping(path ="/{id}")
 	public ResponseEntity<TaskDto> partialUpdate(@PathVariable("id") Long id, @RequestBody TaskDto taskDto){
 		
 		if(!taskService.isExists(id)) {

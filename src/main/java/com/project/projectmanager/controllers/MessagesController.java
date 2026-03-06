@@ -116,7 +116,7 @@ public class MessagesController{
 	
 	
 	
-	@PatchMapping(path ="{/id}")
+	@PatchMapping(path ="/{id}")
 	public ResponseEntity<MessagesDto> partialUpdate(@PathVariable("id") Long id, @RequestBody MessagesDto messagesDto){
 		
 		if(!messageService.isExists(id)) {

@@ -107,7 +107,7 @@ private Mapper<MemberEntity, MemberDto> memberMapper;
 	
 	
 	
-	@PatchMapping(path ="{/id}")
+	@PatchMapping(path ="/{id}")
 	public ResponseEntity<MemberDto> partialUpdate(@PathVariable("id") Long id, @RequestBody MemberDto memberDto){
 		
 		if(!memberService.isExists(id)) {
