@@ -12,6 +12,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import jakarta.persistence.Id;
@@ -21,42 +22,56 @@ import jakarta.persistence.Id;
 @NoArgsConstructor
 @Builder
 @Entity
-@Table(name="members")
+@Table(name="Members")
 public class MemberEntity{
 
  	@Id
-	private Long id;
-	
+ 	@Column(name="Id")
+	private Long Id;
+ 	
+ 	
+	@Column(name="FirstName")
 	private String firstName;
-    	
+	
+	@Column(name="LastName")	
 	private String lastName;
-    	
+	
+	@Column(name="Email")	
 	private String email;
-    	
+	
+	@Column(name="UserName")	
 	private String userName;
-    	
+	
+	@Column(name="Password")	
 	private String password;
-    	
+	
+	@Column(name="DisplayProfile")	
 	private Boolean displayProfile; 
-    	
+	
+	@Column(name="HomePage")	
 	private String homePage; 
-    	
+	
+	@Column(name="HomePhone")	
 	private String homePhone; 
-    	
+	
+	@Column(name="WorkPHone")	
 	private String workPHone; 
-    	
+	
+	@Column(name="MobilePHone")	
 	private String mobilePHone; 
-    	
+	
+	@Column(name="Fax")	
 	private String fax; 
-    	
+	
+	@Column(name="AboutMe")	
 	private String aboutMe;
-
+	
 	public Long getId() {
-		return id;
+		return Id;
 	}
 
 	public void setId(Long id) {
-		this.id = id;
+		this.Id = id;
 	}
 
 	public String getFirstName() {
